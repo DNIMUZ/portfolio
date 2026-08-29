@@ -12,6 +12,7 @@ Built with pure **HTML / CSS / JavaScript** — zero build tools, zero dependenc
 - **Projects** — featured (F1 dashboard · LRT monitor · Meko classifier · Lip-reading FYP · Enrollment analytics) + in-progress (ClaimFlow · Claw3D · Java & Linux tracks)
 - **Education & Certifications** — UiTM B.Sc., UiTM Diploma, APU ACDSP + Google / Microsoft / Coursera certs
 - **Contact** — email + social links
+- **Resume** — `resume.html`, an ATS-friendly, printable resume (download as PDF via browser Print). No phone number — LinkedIn & email only.
 
 ## Features
 
