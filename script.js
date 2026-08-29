@@ -1,0 +1,107 @@
+/* ============================================================
+   Dinie Muzaffar — Portfolio interactions
+   ============================================================ */
+
+(function () {
+    'use strict';
+
+    /* ---------- Theme toggle (persisted) ---------- */
+    const themeToggle = document.getElementById('theme-toggle');
+    const STORAGE_KEY = 'dinie-theme';
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem(STORAGE_KEY, theme);
+    }
+
+    // Respect saved preference, else fall back to dark
+    const savedTheme = localStorage.getItem(STORAGE_KEY);
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        applyTheme('dark');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+            const current = document.documentElement.getAttribute('data-theme');
+            applyTheme(current === 'dark' ? 'light' : 'dark');
+        });
+    }
+
+    /* ---------- Nav background on scroll ---------- */
+    const header = document.getElementById('site-header');
+    function onScrollHeader() {
+        if (window.scrollY > 10) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    }
+    window.addEventListener('scroll', onScrollHeader, { passive: true });
+    onScrollHeader();
+
+    /* ---------- Scroll reveal ---------- */
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+
+    revealEls.forEach(function (el) {
+        revealObserver.observe(el);
+    });
+
+    /* ---------- Experience tabs ---------- */
+    const tabs = document.querySelectorAll('.exp-tab');
+    const panels = document.querySelectorAll('.exp-panel');
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            const index = tab.getAttribute('data-tab');
+
+            tabs.forEach(function (t) { t.classList.remove('active'); });
+            panels.forEach(function (p) { p.classList.remove('active'); });
+
+            tab.classList.add('active');
+            const target = document.querySelector('.exp-panel[data-panel="' + index + '"]');
+            if (target) target.classList.add('active');
+        });
+    });
+
+    /* ---------- Active nav link highlight ---------- */
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const navObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(function (link) {
+                    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+
+    sections.forEach(function (s) { navObserver.observe(s); });
+
+    /* ---------- Smooth scroll offset for fixed header ---------- */
+    navLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#') && href.length > 1) {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    const y = target.getBoundingClientRect().top + window.pageYOffset - 70;
+                    window.scrollTo({ top: y, behavior: 'smooth' });
+                }
+            }
+        });
+    });
+})();
