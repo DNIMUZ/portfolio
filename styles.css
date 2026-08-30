@@ -387,6 +387,23 @@ img {
     color: var(--green);
 }
 
+.tech-group {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--slate-light);
+    margin: 22px 0 4px;
+    letter-spacing: 0.03em;
+}
+
+.tech-group:first-of-type {
+    margin-top: 0;
+}
+
+.tech-group + .tech-list {
+    margin-top: 8px;
+}
+
 .about-photo {
     display: flex;
     flex-direction: column;
