@@ -10,10 +10,10 @@
     --slate: #8892b0;
     --slate-light: #a8b2d1;
     --slate-mid: #ccd6f6;
-    --slate-dark: #495670;
+    --slate-dark: #95a3c4;
     --green: #64ffda;
     --green-tint: rgba(100, 255, 218, 0.1);
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-sans: 'Bricolage Grotesque', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'IBM Plex Mono', 'SF Mono', 'Fira Code', monospace;
     --nav-height: 70px;
     --transition: 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -28,7 +28,7 @@
     --slate: #4a5568;
     --slate-light: #2d3748;
     --slate-mid: #1a202c;
-    --slate-dark: #718096;
+    --slate-dark: #4f5b6b;
     --green: #0f766e;
     --green-tint: rgba(15, 118, 110, 0.08);
     --shadow-color: rgba(0, 0, 0, 0.1);
@@ -51,7 +51,6 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     transition: background-color 0.4s var(--easing), color 0.4s var(--easing);
-    overflow-x: hidden;
 }
 
 section {
@@ -224,7 +223,6 @@ img {
 .btn-solid:hover {
     background: var(--navy);
     color: var(--green);
-    box-shadow: 0 0 15px var(--green-tint);
 }
 
 [data-theme="light"] .btn-solid:hover {
@@ -712,7 +710,7 @@ img {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--green-tint);
+    background: rgba(2, 12, 27, 0.35);
     opacity: 0;
     transition: opacity var(--transition);
 }
@@ -777,7 +775,7 @@ img {
 
 .badge-pill {
     font-family: var(--font-mono);
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     color: var(--green);
     border: 1px solid var(--green);
     padding: 3px 8px;
@@ -1011,7 +1009,7 @@ img {
     font-family: var(--font-mono);
     font-size: 0.75rem;
     color: var(--slate-light);
-    letter-spacing: 0.12em;
+    letter-spacing: 0.04em;
     transition: color var(--transition);
 }
 
