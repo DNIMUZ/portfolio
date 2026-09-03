@@ -144,20 +144,20 @@ body {
 }
 
 [data-theme="light"] .theme-toggle .icon-sun {
-    transform: rotate(0deg);
-    opacity: 1;
-}
-[data-theme="light"] .theme-toggle .icon-moon {
-    transform: rotate(-90deg);
-    opacity: 0;
-}
-[data-theme="dark"] .theme-toggle .icon-sun {
     transform: rotate(90deg);
     opacity: 0;
 }
-[data-theme="dark"] .theme-toggle .icon-moon {
+[data-theme="light"] .theme-toggle .icon-moon {
     transform: rotate(0deg);
     opacity: 1;
+}
+[data-theme="dark"] .theme-toggle .icon-sun {
+    transform: rotate(0deg);
+    opacity: 1;
+}
+[data-theme="dark"] .theme-toggle .icon-moon {
+    transform: rotate(90deg);
+    opacity: 0;
 }
 
 /* Tab indicator — clip-path animated active state */
@@ -1270,20 +1270,6 @@ img {
 
 .footer-credit a:hover {
     color: var(--green);
-}
-
-/* ============================================================
-   SCROLL REVEAL ANIMATIONS
-   ============================================================ */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s var(--easing), transform 0.7s var(--easing);
-}
-
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
 }
 
 /* ============================================================
