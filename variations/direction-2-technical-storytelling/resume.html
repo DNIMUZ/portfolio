@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinie Muzaffar — Resume</title>
+    <style>
+        :root {
+            --navy: #0a192f;
+            --navy-light: #112240;
+            --slate: #475569;
+            --slate-dark: #64748b;
+            --slate-mid: #1e293b;
+            --green: #0f766e;
+            --line: #cbd5e1;
+            --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+            --font-mono: 'Consolas', 'SF Mono', monospace;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--slate-mid);
+            background: #f1f5f9;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+        .page {
+            max-width: 210mm;
+            margin: 24px auto;
+            background: #fff;
+            padding: 40px 48px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        /* header */
+        .resume-header {
+            text-align: center;
+            border-bottom: 2px solid var(--navy);
+            padding-bottom: 16px;
+            margin-bottom: 18px;
+        }
+        .resume-header h1 {
+            font-size: 26px;
+            color: var(--navy);
+            letter-spacing: 0.5px;
+            font-weight: 700;
+        }
+        .resume-header .contact {
+            margin-top: 6px;
+            color: var(--slate-dark);
+            font-size: 12px;
+        }
+        .resume-header .contact a { color: var(--green); text-decoration: none; }
+
+        /* sections */
+        h2.section-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 4px;
+            margin: 20px 0 10px;
+            font-weight: 700;
+        }
+
+        .job { margin-bottom: 14px; }
+        .job-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .job-title { font-weight: 700; color: var(--slate-mid); font-size: 13.5px; }
+        .job-company { font-weight: 600; color: var(--green); }
+        .job-meta { text-align: right; font-style: normal; color: var(--slate-dark); font-size: 12px; }
+        .job-location { color: var(--slate-dark); font-size: 12px; margin-top: 1px; }
+
+        ul.bullets { list-style: none; margin: 6px 0 0; padding-left: 0; }
+        ul.bullets li { padding-left: 16px; position: relative; margin-bottom: 4px; }
+        ul.bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--green); }
+
+        /* education */
+        .edu { margin-bottom: 12px; }
+        .edu-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .edu-title { font-weight: 700; }
+        .edu-meta { text-align: right; color: var(--slate-dark); font-size: 12px; }
+        .edu-school { color: var(--green); font-weight: 600; }
+        ul.edu-bullets { list-style: none; margin: 4px 0 0; }
+        ul.edu-bullets li { padding-left: 16px; position: relative; margin-bottom: 3px; }
+        ul.edu-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--green); }
+
+        /* project */
+        .project { margin-bottom: 12px; }
+        .project-title { font-weight: 700; }
+        .project-links { color: var(--slate-dark); font-size: 12px; }
+        .project-links a { color: var(--green); text-decoration: none; }
+
+        /* skills - two column */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px; }
+        .skill-item { margin-bottom: 3px; }
+        .skill-item b { color: var(--slate-mid); }
+
+        /* certs */
+        .cert { margin-bottom: 3px; }
+        .cert a { color: var(--green); text-decoration: none; word-break: break-all; }
+
+        /* languages */
+        .lang { margin-bottom: 3px; }
+
+        /* print-only button bar */
+        .toolbar {
+            max-width: 210mm;
+            margin: 0 auto 16px;
+            display: flex;
+            gap: 12px;
+            padding: 0 48px;
+        }
+        .toolbar button {
+            padding: 10px 18px;
+            border: 1px solid var(--green);
+            background: var(--green);
+            color: #fff;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .toolbar button.secondary {
+            background: transparent;
+            color: var(--green);
+        }
+
+        /* print styles */
+        @media print {
+            body { background: #fff; }
+            .page { box-shadow: none; margin: 0; max-width: 100%; padding: 0; }
+            .toolbar { display: none; }
+            a { color: inherit; text-decoration: none; }
+            a[href]::after { content: ''; }
+            @page { margin: 14mm; }
+        }
+
+        @media (max-width: 600px) {
+            .page { padding: 24px; }
+            .job-header { flex-direction: column; }
+            .job-meta { text-align: left; }
+            .edu-header { flex-direction: column; }
+            .edu-meta { text-align: left; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="toolbar">
+        <button onclick="window.print()">⬇ Download as PDF</button>
+        <button class="secondary" onclick="window.location.href='index.html'">← Back to Portfolio</button>
+    </div>
+
+    <div class="page">
+        <header class="resume-header">
+            <h1>MUHAMAD DINIE BIN MUZAFFAR</h1>
+            <div class="contact">
+                <a href="mailto:diniemuzaffar@gmail.com">diniemuzaffar@gmail.com</a>
+                &nbsp;|&nbsp;
+                <a href="https://www.linkedin.com/in/diniemuzaffar/" target="_blank" rel="noopener">linkedin.com/in/diniemuzaffar</a>
+                &nbsp;|&nbsp;
+                Kuala Lumpur, Malaysia
+            </div>
+        </header>
+
+        <section>
+            <h2 class="section-title">Professional Summary</h2>
+            <p>Data professional with 2+ years of experience in Oracle PL/SQL development, ETL, data reconciliation, reporting, and application support in Malaysia's banking and insurance sector. Experienced in developing database procedures and batch data workflows for claims, AML compliance, and LHDN E-Invoice-related work. Also builds Python data applications and dashboards using public or synthetic data, with practical exposure to FastAPI, Streamlit, Pandas, and scikit-learn. Seeking opportunities in data engineering, data analytics, ETL development, or Oracle database development.</p>
+        </section>
+
+        <section>
+            <h2 class="section-title">Work Experience</h2>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Data Developer / PL/SQL Developer</span>
+                        &nbsp;<span class="job-company">Maybank Ageas Holding Berhad (MAHB) — Banking &amp; Insurance (GLC)</span>
+                    </div>
+                    <span class="job-meta">June 2024 – Present</span>
+                </div>
+                <div class="job-location">Kuala Lumpur, Malaysia</div>
+                <ul class="bullets">
+                    <li>Developed and maintained Oracle PL/SQL packages, stored procedures, functions, and triggers supporting claims, AML compliance, and LHDN E-Invoice-related workflows.</li>
+                    <li>Built ETL and batch-processing scripts to extract, validate, transform, and load financial data across Oracle modules.</li>
+                    <li>Improved data accuracy by <strong>90%</strong> during AML data remediation through data profiling, cleansing, reconciliation, and restructuring of inconsistent records.</li>
+                    <li>Wrote analytical SQL queries and data models for claims lifecycle and compliance reporting requirements.</li>
+                    <li>Supported integration with external regulatory platforms by preparing data extraction, validation, and transformation logic for LHDN E-Invoice processes.</li>
+                    <li>Performed query optimisation and PL/SQL troubleshooting in Oracle Database 19c environments.</li>
+                    <li>Investigated payment-related data discrepancies using transaction tracing and root cause analysis, then implemented controlled data corrections.</li>
+                    <li>Developed and iteratively enhanced complex SQL queries for BNM regulatory data extraction, refining the data model through multiple versions based on evolving business requirements.</li>
+                    <li>Maintained AML watchlist database by inserting and managing UN Security Council sanctions records, ensuring compliance with screening requirements for PEP, PNG, and fraud prevention.</li>
+                    <li>Created comprehensive technical documentation for Claims Lifecycle System, covering batch processes, database schemas, workflow procedures, and troubleshooting guides.</li>
+                    <li>Conducted UAT testing and data quality validation for regulatory reporting extracts, verifying accuracy of policy holder, beneficiary, and product information.</li>
+                    <li>Leveraged AI-assisted development tools including GitHub Copilot, Claude AI (Sonnet/Opus models), and custom agent workflows to accelerate code development, documentation, and impact analysis.</li>
+                    <li>Created custom AI agents for automated code review, SQL query optimization, and technical documentation generation.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">System Analyst Intern</span>
+                        &nbsp;<span class="job-company">Etiqa Insurance and Takaful (Maybank Ageas)</span>
+                    </div>
+                    <span class="job-meta">March 2024 – June 2024</span>
+                </div>
+                <div class="job-location">Kuala Lumpur, Malaysia</div>
+                <ul class="bullets">
+                    <li>Supported the AMLA (Anti-Money Laundering Act) compliance project within the insurance sector.</li>
+                    <li>Performed database cleansing and data reconciliation using Oracle PL/SQL and Oracle SQL Developer.</li>
+                    <li>Developed Python scripts to clean SQL-format data dumps and export structured outputs to Excel.</li>
+                    <li>Used Linux, Shell scripting, SQL*Plus, and VBA in an enterprise IT environment.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Event Manager</span>
+                        &nbsp;<span class="job-company">Universiti Teknologi MARA (UiTM)</span>
+                    </div>
+                    <span class="job-meta">July 2023</span>
+                </div>
+                <div class="job-location">Shah Alam, Selangor</div>
+                <ul class="bullets">
+                    <li>Organised and led a multi-class academic event on 'Metaverse: Transforming Multimedia Computing,' coordinating logistics, venue, and stakeholder engagement with zero external budget.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <div>
+                        <span class="job-title">Computer Service Technician</span>
+                        &nbsp;<span class="job-company">One Tech Computer Sdn Bhd</span>
+                    </div>
+                    <span class="job-meta">September 2021 – February 2022</span>
+                </div>
+                <div class="job-location">Sungai Besar, Selangor</div>
+                <ul class="bullets">
+                    <li>Diagnosed and resolved hardware and software issues across diverse systems, delivering prompt and professional technical support to maintain high client satisfaction.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Education</h2>
+
+            <div class="edu">
+                <div class="edu-header">
+                    <div>
+                        <span class="edu-title">APU Certified Data Science Programmer (ACDSP)</span><br>
+                        <span class="edu-school">Asia Pacific University of Technology and Innovation (APU), Kuala Lumpur</span>
+                    </div>
+                    <span class="edu-meta">Dec 2023 – Jun 2024</span>
+                </div>
+                <div class="job-location">Fully funded by Yayasan Peneraju Pendidikan Bumiputera (SPRINT programme).</div>
+            </div>
+
+            <div class="edu">
+                <div class="edu-header">
+                    <div>
+                        <span class="edu-title">Bachelor of Computer Science (Hons.) — CS230</span><br>
+                        <span class="edu-school">Universiti Teknologi MARA (UiTM) Shah Alam</span>
+                    </div>
+                    <span class="edu-meta">Mar 2022 – Jun 2024 · CGPA: 3.29</span>
+                </div>
+                <ul class="edu-bullets">
+                    <li>Final Year Project: Built a lip-reading prediction system using deep learning (CNN/LSTM), focusing on model accuracy and efficiency.</li>
+                    <li>Developed a comprehensive Power BI dashboard by curating, cleaning, and integrating multiple datasets.</li>
+                    <li>Applied RapidMiner for data preprocessing, transformation, and pattern extraction from raw datasets.</li>
+                </ul>
+            </div>
+
+            <div class="edu">
+                <div class="edu-header">
+                    <div>
+                        <span class="edu-title">Diploma in Computer Science</span><br>
+                        <span class="edu-school">Universiti Teknologi MARA (UiTM) Cawangan Terengganu</span>
+                    </div>
+                    <span class="edu-meta">Jun 2019 – Feb 2022 · CGPA: 3.58</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Personal Project</h2>
+
+            <div class="project">
+                <div class="project-title">Box-Box Analytics: F1 Race Pace Dashboard | Python, FastF1, Pandas, Plotly, Streamlit</div>
+                <ul class="bullets">
+                    <li>Built and deployed an interactive Streamlit dashboard using publicly available F1 timing data from FastF1.</li>
+                    <li>Added race pace comparison, tyre degradation, pit-stop timeline, and driver performance metrics.</li>
+                    <li>Implemented cached data loading and reusable analytics functions for race selection and interactive charts.</li>
+                </ul>
+                <div class="project-links">GitHub: <a href="https://github.com/DNIMUZ/f1-race-pace-analytics" target="_blank" rel="noopener">github.com/DNIMUZ/f1-race-pace-analytics</a></div>
+            </div>
+
+            <div class="project">
+                <div class="project-title">Kelana Jaya LRT Monitor | Python, FastAPI, Streamlit, SQLite, Pandas, pytest</div>
+                <ul class="bullets">
+                    <li>Built a monitoring prototype combining official transport facts, public signals, and synthetic demonstration data.</li>
+                    <li>Implemented SQLite storage, FastAPI endpoints, Streamlit dashboard views, and an explainable status estimator.</li>
+                    <li>Added data validation, station mapping, signal classification, and automated tests for core processing and API behavior.</li>
+                </ul>
+                <div class="project-links">GitHub: <a href="https://github.com/DNIMUZ/lrt-kelana-jaya-monitor" target="_blank" rel="noopener">github.com/DNIMUZ/lrt-kelana-jaya-monitor</a></div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-item"><b>Databases and SQL:</b> Oracle PL/SQL, Oracle Database 19c, Oracle SQL Developer, SQL, SQLite</div>
+                <div class="skill-item"><b>Data Engineering and ETL:</b> ETL pipelines, data cleaning, data reconciliation, batch processing, data modelling, data validation</div>
+                <div class="skill-item"><b>Programming:</b> Python (Pandas, NumPy, scikit-learn), PL/SQL</div>
+                <div class="skill-item"><b>BI and Visualisation:</b> Power BI, Microsoft Excel, Plotly, Matplotlib, Seaborn</div>
+                <div class="skill-item"><b>Data Science and ML:</b> Machine learning, deep learning, CNN/LSTM, EDA, data cleaning, feature engineering</div>
+                <div class="skill-item"><b>Applications and Tools:</b> FastAPI, Streamlit, REST APIs, Git, GitHub, Jupyter Notebook, pytest</div>
+                <div class="skill-item"><b>AI and Automation:</b> GitHub Copilot, Claude AI (Sonnet/Opus), AI agent development, prompt engineering, AI-assisted development</div>
+                <div class="skill-item"><b>Regulatory and Delivery:</b> AML/AMLA, LHDN E-Invoice, BNM compliance, regulatory reporting, SDLC, Agile, Waterfall</div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Licenses &amp; Certifications</h2>
+            <div class="cert">Google — Advanced Data Analytics Professional Certificate (In Progress)</div>
+            <div class="cert">Google — Foundation of Data Science</div>
+            <div class="cert">Google — Get Started with Python</div>
+            <div class="cert">Google — Go Beyond the Numbers: Translate Data into Insights</div>
+            <div class="cert">Microsoft — Azure Data Fundamentals (DP-900)</div>
+            <div class="cert">Python Institute — Certified Entry-Level Python Programmer (PCEP)</div>
+            <div class="cert">Coursera — Prepare, Clean, Transform, and Load Data using Power BI</div>
+            <div class="cert">Coursera — Create Digital Marketing Campaign Dashboards in Tableau</div>
+            <div class="cert">Coursera — Application of Data Analysis in Business with R Programming</div>
+        </section>
+
+        <section>
+            <h2 class="section-title">Languages</h2>
+            <div class="lang"><b>Bahasa Malaysia:</b> Native</div>
+            <div class="lang"><b>English:</b> Professional Working Proficiency</div>
+        </section>
+    </div>
+</body>
+</html>

@@ -87,6 +87,24 @@
         staggerObserver.observe(container);
     });
 
+    /* ---------- Typewriter on hero name (Technical storytelling) ---------- */
+    const heroName = document.querySelector('.hero-name');
+    if (heroName) {
+        const textNode = heroName.childNodes[0];
+        const fullName = 'Dinie Muzaffar';
+        let typeIndex = 0;
+        // Blank immediately so the name "types" itself in after the stagger reveal
+        if (textNode) textNode.nodeValue = '';
+        function typeChar() {
+            if (typeIndex < fullName.length) {
+                textNode.nodeValue = fullName.slice(0, ++typeIndex);
+                setTimeout(typeChar, 55);
+            }
+        }
+        // Start typing after the hero stagger reveal finishes (~500ms)
+        setTimeout(typeChar, 500);
+    }
+
     /* ---------- Experience tabs ---------- */
     const tabs = document.querySelectorAll('.exp-tab');
     const panels = document.querySelectorAll('.exp-panel');
