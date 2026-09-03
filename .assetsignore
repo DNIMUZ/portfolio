@@ -1,0 +1,7 @@
+# Files not meant to be served
+.git/
+.gitignore
+.wrangler/
+*.log
+wrangler.jsonc
+README.md
