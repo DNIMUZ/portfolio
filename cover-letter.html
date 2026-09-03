@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter Generator</title>
+    <style>
+        :root {
+            --navy: #0a192f;
+            --slate-dark: #64748b;
+            --slate-mid: #1e293b;
+            --green: #0f766e;
+            --line: #cbd5e1;
+            --font-sans: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font-sans); background: #f1f5f9; color: var(--slate-mid); font-size: 14px; }
+
+        /* --- FORM PANEL --- */
+        .form-panel {
+            max-width: 700px;
+            margin: 24px auto;
+            background: #fff;
+            padding: 24px 32px;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .form-panel h2 { font-size: 16px; color: var(--navy); margin-bottom: 16px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin-bottom: 12px; }
+        .form-row.full { grid-template-columns: 1fr; }
+        .form-row label { font-size: 12px; font-weight: 600; color: var(--slate-dark); margin-bottom: 2px; display: block; }
+        .form-row input {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            font-size: 13px;
+            font-family: inherit;
+            color: var(--slate-mid);
+        }
+        .form-row input:focus { outline: 2px solid var(--green); border-color: transparent; }
+        .form-actions { display: flex; gap: 12px; margin-top: 16px; }
+        .btn {
+            padding: 10px 20px;
+            border: 1px solid var(--green);
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+        }
+        .btn-primary { background: var(--green); color: #fff; }
+        .btn-secondary { background: transparent; color: var(--green); }
+        .hint { font-size: 11px; color: var(--slate-dark); margin-top: 8px; }
+
+        /* --- COVER LETTER PAGE --- */
+        .letter-page {
+            max-width: 700px;
+            margin: 24px auto;
+            background: #fff;
+            padding: 48px 56px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+            line-height: 1.65;
+            font-size: 13.5px;
+            color: #222;
+        }
+        .letter-page .sender { font-weight: 700; margin-bottom: 2px; }
+        .letter-page .sender-contact { font-size: 12px; color: var(--slate-dark); margin-bottom: 16px; }
+        .letter-page .date { margin-bottom: 16px; }
+        .letter-page .greeting { margin-bottom: 14px; }
+        .letter-page p { margin-bottom: 12px; }
+        .letter-page .closing { margin-top: 20px; }
+        .letter-page .placeholder {
+            background: #fff3cd;
+            padding: 1px 4px;
+            border-radius: 2px;
+            font-weight: 600;
+        }
+
+        /* --- PRINT STYLES --- */
+        @media print {
+            body { background: #fff; }
+            .form-panel, .toolbar { display: none !important; }
+            .letter-page { box-shadow: none; margin: 0; max-width: 100%; padding: 0; }
+            .placeholder { background: none; padding: 0; font-weight: 400; }
+            @page { margin: 20mm; }
+        }
+
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+            .letter-page { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar">
+        <button class="btn btn-primary" onclick="window.print()">Download as PDF</button>
+        <button class="btn btn-secondary" onclick="window.location.href='index.html'">&lt; Back to Portfolio</button>
+    </div>
+
+    <div class="form-panel">
+        <h2>Fill in the fields below</h2>
+        <div class="form-row">
+            <div>
+                <label for="f-hiring">Hiring Manager Name</label>
+                <input id="f-hiring" type="text" placeholder="e.g. Ahmad bin Abdullah">
+            </div>
+            <div>
+                <label for="f-company">Company Name</label>
+                <input id="f-company" type="text" placeholder="e.g. Petronas Digital">
+            </div>
+        </div>
+        <div class="form-row">
+            <div>
+                <label for="f-title">Job Title</label>
+                <input id="f-title" type="text" placeholder="e.g. Data Engineer">
+            </div>
+            <div>
+                <label for="f-area">Specific Area</label>
+                <input id="f-area" type="text" placeholder="e.g. data engineering and ETL development">
+            </div>
+        </div>
+        <p class="hint">The cover letter updates as you type. Click "Download as PDF" when ready.</p>
+    </div>
+
+    <div class="letter-page" id="letter">
+        <div class="sender">MUHAMAD DINIE BIN MUZAFFAR</div>
+        <div class="sender-contact">diniemuzaffar@gmail.com | linkedin.com/in/diniemuzaffar | Kuala Lumpur, Malaysia | github.com/DNIMUZ | portfolio.diniemuzaffar.workers.dev</div>
+
+        <div class="date">September 2026</div>
+
+        <div class="greeting">Dear <span class="placeholder" id="p-hiring">Hiring Manager</span>,</div>
+
+        <p>I am writing to express my interest in the <span class="placeholder" id="p-title">[Job Title]</span> role at <span class="placeholder" id="p-company">[Company Name]</span>. I have been working with Oracle PL/SQL, ETL pipelines, and regulatory data workflows in Malaysia's banking and insurance sector for the past two years, and I am looking for a role where I can continue developing my skills in <span class="placeholder" id="p-area">[specific area]</span>.</p>
+
+        <p>At Maybank Ageas Holding Berhad, I develop and maintain Oracle PL/SQL packages, stored procedures, and batch-processing scripts that support claims processing, AML compliance, and LHDN E-Invoice integration. One project I contributed to involved remediating AML data, where I helped improve data accuracy through profiling, cleansing, and restructuring inconsistent records across source systems. I also write SQL queries for BNM regulatory extraction, document batch processes and database schemas, and validate reporting extracts before regulatory submission.</p>
+
+        <p>Outside of work, I have been building practical experience with Python and modern data tools. I developed an F1 race-pace analytics dashboard using FastF1, Pandas, Plotly, and Streamlit, and a public-transit monitoring prototype combining FastAPI, SQLite, and automated testing. These are learning projects, but they have given me hands-on practice with data pipelines, API design, and presenting data through interactive interfaces.</p>
+
+        <p>I hold a Bachelor of Computer Science from UiTM (CGPA 3.29) and completed the APU Certified Data Science Programmer programme through the SPRINT scholarship. I also hold certifications from Microsoft (Azure Data Fundamentals DP-900) and the Python Institute (PCEP), and I am currently working through the Google Advanced Data Analytics Professional Certificate.</p>
+
+        <p>I am an early-career developer with a growing set of practical skills. I am motivated, I learn quickly, and I am genuinely interested in <span class="placeholder" id="p-area2">[specific area]</span>. I would welcome the chance to discuss how I might contribute to your team.</p>
+
+        <p>Thank you for your time.</p>
+
+        <div class="closing">
+            <p>Sincerely,<br>Muhamad Dinie Bin Muzaffar</p>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        'use strict';
+        var fields = [
+            { id: 'f-hiring', targets: ['p-hiring'] },
+            { id: 'f-company', targets: ['p-company'] },
+            { id: 'f-title', targets: ['p-title'] },
+            { id: 'f-area', targets: ['p-area', 'p-area2'] }
+        ];
+        var defaults = {
+            'f-hiring': 'Hiring Manager',
+            'f-company': '[Company Name]',
+            'f-title': '[Job Title]',
+            'f-area': '[specific area]'
+        };
+
+        fields.forEach(function (f) {
+            var input = document.getElementById(f.id);
+            if (!input) return;
+            input.addEventListener('input', function () {
+                var val = input.value.trim() || defaults[f.id];
+                f.targets.forEach(function (tid) {
+                    var el = document.getElementById(tid);
+                    if (el) el.textContent = val;
+                });
+                input.classList.toggle('has-value', input.value.trim().length > 0);
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
