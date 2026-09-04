@@ -1385,18 +1385,6 @@ img {
     background: radial-gradient(circle at 50% 0%, rgba(100, 255, 218, 0.06), transparent 60%);
     pointer-events: none;
 }
-.that-guy-badge {
-    display: inline-block;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--green);
-    border: 1px solid var(--green);
-    border-radius: 999px;
-    padding: 5px 14px;
-    margin-bottom: 18px;
-}
 .that-guy-title {
     font-size: clamp(1.6rem, 4vw, 2.6rem);
     font-weight: 700;
