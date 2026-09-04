@@ -137,6 +137,9 @@
             .that-guy-banner { display: none !important; }
             a { color: inherit; text-decoration: none; }
             a[href]::after { content: ''; }
+            .skills-grid { grid-template-columns: 1fr; }
+            ul.bullets li::before,
+            ul.edu-bullets li::before { content: '\2022 '; }
             @page { margin: 14mm; }
         }
 
