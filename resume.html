@@ -134,9 +134,57 @@
             body { background: #fff; }
             .page { box-shadow: none; margin: 0; max-width: 100%; padding: 0; }
             .toolbar { display: none; }
+            .that-guy-banner { display: none !important; }
             a { color: inherit; text-decoration: none; }
             a[href]::after { content: ''; }
+            .skills-grid { grid-template-columns: 1fr; }
+            ul.bullets li::before,
+            ul.edu-bullets li::before { content: '\2022 '; }
             @page { margin: 14mm; }
+        }
+
+        /* playful closing banner — on screen only */
+        .that-guy-banner {
+            max-width: 210mm;
+            margin: 0 auto 40px;
+            padding: 0 48px;
+        }
+        .that-guy-banner-inner {
+            background: var(--navy);
+            color: #fff;
+            border-radius: 12px;
+            padding: 32px 40px;
+            text-align: center;
+            border: 2px solid var(--green);
+        }
+        .that-guy-banner-inner h2 {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        .that-guy-banner-inner h2 .guy-name { color: var(--green); }
+        .that-guy-banner-inner p {
+            color: #cbd5e1;
+            font-size: 14px;
+            max-width: 560px;
+            margin: 0 auto 18px;
+        }
+        .that-guy-banner-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+        .that-guy-banner-actions a {
+            color: var(--green);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .that-guy-banner-note {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 0 !important;
         }
 
         @media (max-width: 600px) {
@@ -360,6 +408,20 @@
             <div class="lang"><b>Bahasa Malaysia:</b> Native</div>
             <div class="lang"><b>English:</b> Professional Working Proficiency</div>
         </section>
+    </div>
+
+    <!-- Playful closing banner — on screen only, excluded from PDF download -->
+    <div class="that-guy-banner">
+        <div class="that-guy-banner-inner">
+            <h2>Still reading? <span class="guy-name">I'm that guy you need.</span></h2>
+            <p>Manual process? I automate it. 3 million records a day? I keep them moving.
+            Hiring? You've already seen the proof — my inbox is open.</p>
+            <div class="that-guy-banner-actions">
+                <a href="mailto:diniemuzaffar@gmail.com">diniemuzaffar@gmail.com</a>
+                <a href="https://portfolio.diniemuzaffar.workers.dev" target="_blank" rel="noopener">portfolio.diniemuzaffar.workers.dev</a>
+            </div>
+            <p class="that-guy-banner-note">(This banner is fun-only — it never appears in the downloaded PDF.)</p>
+        </div>
     </div>
 </body>
 </html>
