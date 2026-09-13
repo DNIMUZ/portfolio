@@ -32,6 +32,7 @@
     /* ---------- Nav background on scroll ---------- */
     const header = document.getElementById('site-header');
     function onScrollHeader() {
+        if (!header) return;
         if (window.scrollY > 10) {
             header.classList.add('scrolled');
         } else {
