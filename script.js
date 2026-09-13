@@ -32,6 +32,7 @@
     /* ---------- Nav background on scroll ---------- */
     const header = document.getElementById('site-header');
     function onScrollHeader() {
+        if (!header) return;
         if (window.scrollY > 10) {
             header.classList.add('scrolled');
         } else {
@@ -135,4 +136,26 @@
             }
         });
     });
+
+    /* ---------- Click-to-reveal "that guy" sections ---------- */
+    function setupReveal(buttonId, contentId) {
+        const btn = document.getElementById(buttonId);
+        const content = document.getElementById(contentId);
+        if (!btn || !content) return;
+        const showLabel = 'Show me the confident part &#9662;';
+        const hideLabel = 'Hide the confident part &#9652;';
+        btn.setAttribute('aria-expanded', 'false');
+
+        function setState(open) {
+            content.hidden = !open;
+            btn.innerHTML = open ? hideLabel : showLabel;
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
+        btn.addEventListener('click', function () {
+            setState(content.hidden);
+        });
+    }
+    setupReveal('that-guy-reveal', 'that-guy-content');
+    setupReveal('that-guy-resume-reveal', 'that-guy-banner-content');
 })();
