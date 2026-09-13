@@ -142,12 +142,18 @@
         const btn = document.getElementById(buttonId);
         const content = document.getElementById(contentId);
         if (!btn || !content) return;
+        const showLabel = 'Show me the confident part &#9662;';
+        const hideLabel = 'Hide the confident part &#9652;';
+        btn.setAttribute('aria-expanded', 'false');
+
+        function setState(open) {
+            content.hidden = !open;
+            btn.innerHTML = open ? hideLabel : showLabel;
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        }
+
         btn.addEventListener('click', function () {
-            const hidden = content.hidden;
-            content.hidden = !hidden;
-            btn.innerHTML = hidden
-                ? 'Hide the confident part &#9652;'
-                : 'Show me the confident part &#9662;';
+            setState(content.hidden);
         });
     }
     setupReveal('that-guy-reveal', 'that-guy-content');
