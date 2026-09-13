@@ -109,12 +109,13 @@
                 </ul>
                 <h3 class="tech-group">Currently learning</h3>
                 <ul class="tech-list stagger-entrance">
+                    <li>Power BI</li>
+                    <li>Power Apps</li>
+                    <li>Power Automate</li>
+                    <li>DAX &amp; Power Query (M)</li>
                     <li>Java &amp; Spring Boot</li>
                     <li>Docker &amp; Containerisation</li>
-                    <li>Linux / DevOps</li>
                     <li>Modern data stack (dbt, DuckDB, Airflow, Spark)</li>
-                    <li>MySQL &amp; MongoDB</li>
-                    <li>AWS cloud services</li>
                 </ul>
             </div>
             <div class="about-photo">
@@ -223,10 +224,12 @@
                         An interactive Formula 1 dashboard for analysing race pace, tyre degradation, and
                         pit-stop strategy using official FIA timing data. Visualise lap-time evolution,
                         compare drivers head-to-head, and inspect tyre compounds &amp; pit-stop timelines.
+                        ETL pipeline loads 14k+ laps into a Postgres warehouse (Supabase); a companion
+                        <strong>4-page Power BI dashboard</strong> reads from the same warehouse via ODBC.
                     </p>
                 </div>
                 <ul class="project-tech stagger-entrance">
-                    <li>Python</li><li>FastF1</li><li>Pandas</li><li>Plotly</li><li>Streamlit</li>
+                    <li>Python</li><li>FastF1</li><li>Pandas</li><li>PostgreSQL</li><li>Power BI</li><li>Streamlit</li>
                 </ul>
                 <div class="project-links">
                     <a href="https://f1-race-pace-analytics-2qxyxwwxl798wejx3y3xxt.streamlit.app/" target="_blank" rel="noopener" aria-label="Live demo" title="Live demo">
@@ -356,90 +359,7 @@
             </div>
         </div>
 
-        <!-- Ongoing -->
-        <h3 class="project-group-title active-group">In Progress</h3>
 
-        <div class="project-grid ongoing">
-            <div class="project-card small">
-                <div class="project-top">
-                    <div class="project-folder">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <div class="project-links"></div>
-                </div>
-                <h3 class="project-grid-title">ClaimFlow <span class="badge-pill">Flagship</span></h3>
-                <p class="project-desc">End-to-end claims processing &amp; fraud-alert platform: Python synthetic ingestion → PostgreSQL → Spring Boot REST API → Kafka fraud stream → Docker Compose.</p>
-                <ul class="project-tech stagger-entrance">
-                    <li>Python</li><li>Spring Boot</li><li>Kafka</li><li>PostgreSQL</li><li>Docker</li>
-                </ul>
-                <div class="progress-row">
-                    <div class="progress-bar"><span style="width:25%"></span></div>
-                    <span class="progress-label">25%</span>
-                </div>
-                <span class="status-badge ongoing">&#9679; In Progress</span>
-            </div>
-
-            <div class="project-card small">
-                <div class="project-top">
-                    <div class="project-folder">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/iamlukethedev/Claw3D" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <h3 class="project-grid-title">Claw3D <span class="badge-pill">Contributor</span></h3>
-                <p class="project-desc">A 3D virtual office for AI agents: a Next.js / React / Three.js workspace where agents collaborate, review code, and run standups in real time.</p>
-                <ul class="project-tech stagger-entrance">
-                    <li>Next.js</li><li>React</li><li>Three.js</li><li>TypeScript</li>
-                </ul>
-                <div class="progress-row">
-                    <div class="progress-bar"><span style="width:35%"></span></div>
-                    <span class="progress-label">35%</span>
-                </div>
-                <span class="status-badge ongoing">&#9679; In Progress</span>
-            </div>
-
-            <div class="project-card small">
-                <div class="project-top">
-                    <div class="project-folder">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <div class="project-links"></div>
-                </div>
-                <h3 class="project-grid-title">Java Backend &amp; Full-Stack</h3>
-                <p class="project-desc">16-week structured track: fundamentals → OOP → collections → Spring Boot → REST APIs → JPA/Hibernate → security → Kafka → React + microservices.</p>
-                <ul class="project-tech stagger-entrance">
-                    <li>Java</li><li>Spring Boot</li><li>JPA</li><li>Kafka</li><li>React</li>
-                </ul>
-                <div class="progress-row">
-                    <div class="progress-bar"><span style="width:60%"></span></div>
-                    <span class="progress-label">60%</span>
-                </div>
-                <span class="status-badge ongoing">&#9679; In Progress</span>
-            </div>
-
-            <div class="project-card small">
-                <div class="project-top">
-                    <div class="project-folder">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <div class="project-links"></div>
-                </div>
-                <h3 class="project-grid-title">Linux / DevOps Engineering</h3>
-                <p class="project-desc">16-week track: terminals &amp; filesystems → text processing → permissions → systemd → networking → SSH → Bash automation → Docker → production troubleshooting.</p>
-                <ul class="project-tech stagger-entrance">
-                    <li>Linux</li><li>Bash</li><li>systemd</li><li>Networking</li><li>Docker</li>
-                </ul>
-                <div class="progress-row">
-                    <div class="progress-bar"><span style="width:60%"></span></div>
-                    <span class="progress-label">60%</span>
-                </div>
-                <span class="status-badge ongoing">&#9679; In Progress</span>
-            </div>
-        </div>
 
         <div class="projects-more">
             <a href="https://github.com/DNIMUZ?tab=repositories" target="_blank" rel="noopener" class="btn btn-outline">View Full Project Archive</a>
@@ -515,15 +435,18 @@
     <!-- ============================ THAT GUY ============================ -->
     <section class="that-guy-section section reveal" id="that-guy" aria-label="Closing">
         <div class="that-guy-inner">
-            <h2 class="that-guy-title">Let's be honest: <span class="guy-name">I'm that guy you need.</span></h2>
-            <p class="that-guy-desc">
-                If your data pipeline needs a keeper, I'm your guy.
-            </p>
-            <div class="hero-actions" style="justify-content:center">
-                <a href="mailto:diniemuzaffar@gmail.com" class="btn btn-solid">Let's Talk</a>
-                <a href="resume.html" class="btn btn-outline">See the Proof</a>
+            <button id="that-guy-reveal" class="btn btn-outline" type="button">Show me the confident part &#9662;</button>
+            <div class="that-guy-content" id="that-guy-content" hidden>
+                <h2 class="that-guy-title">Let's be honest: <span class="guy-name">I'm that guy you need.</span></h2>
+                <p class="that-guy-desc">
+                    If your data pipeline needs a keeper, I'm your guy.
+                </p>
+                <div class="hero-actions" style="justify-content:center">
+                    <a href="mailto:diniemuzaffar@gmail.com" class="btn btn-solid">Let's Talk</a>
+                    <a href="resume.html" class="btn btn-outline">See the Proof</a>
+                </div>
+                <p class="that-guy-note">(Humble resume also available above. This is just the confident part.)</p>
             </div>
-            <p class="that-guy-note">(Humble resume also available above. This is just the confident part.)</p>
         </div>
     </section>
     </main>

@@ -135,4 +135,20 @@
             }
         });
     });
+
+    /* ---------- Click-to-reveal "that guy" sections ---------- */
+    function setupReveal(buttonId, contentId) {
+        const btn = document.getElementById(buttonId);
+        const content = document.getElementById(contentId);
+        if (!btn || !content) return;
+        btn.addEventListener('click', function () {
+            const hidden = content.hidden;
+            content.hidden = !hidden;
+            btn.innerHTML = hidden
+                ? 'Hide the confident part &#9652;'
+                : 'Show me the confident part &#9662;';
+        });
+    }
+    setupReveal('that-guy-reveal', 'that-guy-content');
+    setupReveal('that-guy-resume-reveal', 'that-guy-banner-content');
 })();

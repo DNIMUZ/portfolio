@@ -221,7 +221,7 @@
 
         <section>
             <h2 class="section-title">Professional Summary</h2>
-            <p>Data professional with 2+ years of experience in Oracle PL/SQL development, ETL, data reconciliation, reporting, and application support in Malaysia's banking and insurance sector. Experienced in developing database procedures and batch data workflows for claims, AML compliance, and LHDN E-Invoice-related work. Also builds Python data applications and dashboards using public or synthetic data, with practical exposure to FastAPI, Streamlit, Pandas, and scikit-learn. Seeking opportunities in data engineering, data analytics, ETL development, or Oracle database development.</p>
+            <p>Data professional with 2+ years of experience in Oracle PL/SQL development, ETL, data reconciliation, reporting, and application support in Malaysia's banking and insurance sector. Experienced in developing database procedures and batch data workflows for claims, AML compliance, and LHDN E-Invoice-related work. Also builds Python data applications and dashboards using public or synthetic data, with practical exposure to Power BI, Power Apps, Power Automate, FastAPI, Streamlit, Pandas, and scikit-learn. Seeking opportunities in data analytics, business intelligence, data engineering, ETL development, or Oracle database development.</p>
         </section>
 
         <section>
@@ -346,11 +346,11 @@
             <h2 class="section-title">Personal Project</h2>
 
             <div class="project">
-                <div class="project-title">Box-Box Analytics: F1 Race Pace Dashboard | Python, FastF1, Pandas, Plotly, Streamlit</div>
+                <div class="project-title">Box-Box Analytics: F1 Race Pace Dashboard | Python, FastF1, Pandas, PostgreSQL, Power BI, Streamlit</div>
                 <ul class="bullets">
-                    <li>Built and deployed an interactive Streamlit dashboard using publicly available F1 timing data from FastF1.</li>
-                    <li>Added race pace comparison, tyre degradation, pit-stop timeline, and driver performance metrics.</li>
-                    <li>Implemented cached data loading and reusable analytics functions for race selection and interactive charts.</li>
+                    <li>Built and deployed an interactive Streamlit dashboard using official F1 timing data from FastF1, covering race pace comparison, tyre degradation, pit-stop timelines, and driver metrics.</li>
+                    <li>Designed an ETL pipeline (FastF1 → Postgres/Supabase warehouse) that upserts ~14,500 lap records across 13 races, then built a 4-page Power BI dashboard reading from the same warehouse via ODBC with custom DAX measures.</li>
+                    <li>Implemented cached data loading, reusable analytics functions, dual-source fallback (live API vs warehouse), automated tests, and dark-mode theming.</li>
                 </ul>
                 <div class="project-links">GitHub: <a href="https://github.com/DNIMUZ/f1-race-pace-analytics" target="_blank" rel="noopener">github.com/DNIMUZ/f1-race-pace-analytics</a></div>
             </div>
@@ -379,10 +379,10 @@
         <section>
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-item"><b>Databases and SQL:</b> Oracle PL/SQL, Oracle Database 19c, Oracle SQL Developer, SQL, SQLite</div>
-                <div class="skill-item"><b>Data Engineering and ETL:</b> ETL pipelines, data cleaning, data reconciliation, batch processing, data modelling, data validation</div>
+                <div class="skill-item"><b>BI and Visualisation:</b> Power BI, Power Apps, Power Automate, DAX, Power Query (M), Microsoft Excel, Plotly, Matplotlib, Seaborn</div>
+                <div class="skill-item"><b>Databases and SQL:</b> Oracle PL/SQL, Oracle Database 19c, Oracle SQL Developer, SQL, PostgreSQL, Supabase, SQLite</div>
+                <div class="skill-item"><b>Data Engineering and ETL:</b> ETL pipelines, data cleaning, data reconciliation, batch processing, data modelling, data validation, ODBC</div>
                 <div class="skill-item"><b>Programming:</b> Python (Pandas, NumPy, scikit-learn), PL/SQL</div>
-                <div class="skill-item"><b>BI and Visualisation:</b> Power BI, Microsoft Excel, Plotly, Matplotlib, Seaborn</div>
                 <div class="skill-item"><b>Data Science and ML:</b> Machine learning, deep learning, CNN/LSTM, exploratory data analysis, data cleaning, feature engineering</div>
                 <div class="skill-item"><b>Applications and Tools:</b> FastAPI, Streamlit, REST APIs, Git, GitHub, Jupyter Notebook, pytest</div>
                 <div class="skill-item"><b>AI and Automation:</b> GitHub Copilot, Claude AI (Sonnet/Opus), AI agent workflows, prompt engineering, AI-assisted development</div>
@@ -412,7 +412,8 @@
 
     <!-- Playful closing banner — on screen only, excluded from PDF download -->
     <div class="that-guy-banner">
-        <div class="that-guy-banner-inner">
+        <button id="that-guy-resume-reveal" type="button" style="display:block; margin:0 auto 16px; padding:10px 18px; border:1px solid var(--green); background:transparent; color:var(--green); border-radius:6px; font-size:14px; cursor:pointer; font-weight:600; max-width:210mm; width:calc(100% - 96px); text-align:center;">Show me the confident part &#9662;</button>
+        <div class="that-guy-banner-inner" id="that-guy-banner-content" hidden>
             <h2>Still reading? <span class="guy-name">I'm that guy you need.</span></h2>
             <p>Manual process? I automate it. Hiring? You've already seen the proof — my inbox is open.</p>
             <div class="that-guy-banner-actions">
