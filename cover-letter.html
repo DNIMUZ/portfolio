@@ -29,7 +29,8 @@
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 20px; margin-bottom: 12px; }
         .form-row.full { grid-template-columns: 1fr; }
         .form-row label { font-size: 13px; font-weight: 600; color: var(--slate-dark); margin-bottom: 4px; display: block; }
-        .form-row input {
+        .form-row input,
+        .form-row select {
             width: 100%;
             padding: 10px 12px;
             border: 1px solid var(--line);
@@ -37,8 +38,10 @@
             font-size: 15px;
             font-family: inherit;
             color: var(--slate-mid);
+            background: #fff;
         }
-        .form-row input:focus { outline: 2px solid var(--green); border-color: transparent; }
+        .form-row input:focus,
+        .form-row select:focus { outline: 2px solid var(--green); border-color: transparent; }
         .form-actions { display: flex; gap: 12px; margin-top: 16px; }
         .btn {
             padding: 11px 22px;
@@ -111,6 +114,22 @@
                 <input id="f-company" type="text" placeholder="e.g. Petronas Digital">
             </div>
         </div>
+        <div class="form-row full">
+            <div>
+                <label for="f-role">Role Template</label>
+                <select id="f-role">
+                    <option value="custom" selected>Custom / Free text</option>
+                    <option value="data-analyst">Data Analyst</option>
+                    <option value="data-engineer">Data Engineer</option>
+                    <option value="data-scientist">Data Scientist</option>
+                    <option value="bi-developer">Business Intelligence (Power BI) Developer</option>
+                    <option value="analytics-developer">Analytics Developer (Power Platform)</option>
+                    <option value="software-engineer">Software Engineer</option>
+                    <option value="backend-engineer">Backend Engineer</option>
+                </select>
+                <p class="hint">Pick a role to tailor the letter body. The job title stays free text — type exactly what the posting says, e.g. "Data Pipeline Engineer".</p>
+            </div>
+        </div>
         <div class="form-row">
             <div>
                 <label for="f-title">Job Title</label>
@@ -132,13 +151,15 @@
 
         <div class="greeting">Dear <span class="placeholder" id="p-hiring">Hiring Manager</span>,</div>
 
-        <p>I'm applying for the <span class="placeholder" id="p-title">[Job Title]</span> role at <span class="placeholder" id="p-company">[Company Name]</span>. For the past two years I've built and maintained Oracle PL/SQL and ETL pipelines across claims, AML compliance, and LHDN E-Invoice work, and I want to put that experience to work in <span class="placeholder" id="p-area">[specific area]</span>.</p>
+        <div id="letter-body">
+            <p id="p-open">I'm applying for the <span class="placeholder" id="p-title">[Job Title]</span> role at <span class="placeholder" id="p-company">[Company Name]</span>. For the past two years I've built and maintained Oracle PL/SQL and ETL pipelines across claims, AML compliance, and LHDN E-Invoice work, and I want to put that experience to work in <span class="placeholder" id="p-area">[specific area]</span>.</p>
 
-        <p>The work I'm proudest of: automating the Regular Watchlist process at Maybank Ageas — PL/SQL triggers, packages, and batch jobs now handling roughly 3 million records a day, replacing what used to be a manual job for the L2 Support team. I also cleaned up a large AML data set, cutting errors by around 90% through profiling and reconciliation.</p>
+            <p id="p-main">The work I'm proudest of: automating the Regular Watchlist process at Maybank Ageas — PL/SQL triggers, packages, and batch jobs now handling roughly 3 million records a day, replacing what used to be a manual job for the L2 Support team. I also cleaned up a large AML data set, cutting errors by around 90% through profiling and reconciliation.</p>
 
-        <p>Outside work, I build public projects that ship: an F1 race-pace dashboard (FastF1 to a Postgres warehouse, surfaced through Streamlit and Power BI) and an LRT monitoring prototype (FastAPI, SQLite, pytest). I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme.</p>
+            <p id="p-projects">Outside work, I build public projects that ship: an F1 race-pace dashboard (FastF1 to a Postgres warehouse, surfaced through Streamlit and Power BI) and an LRT monitoring prototype (FastAPI, SQLite, pytest). I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme.</p>
 
-        <p>I care most about getting data right enough to be trusted, which is why I'm drawn to <span class="placeholder" id="p-area2">[specific area]</span>. I'd welcome the chance to talk through how I'd fit in.</p>
+            <p id="p-close">I care most about getting data right enough to be trusted, which is why I'm drawn to <span class="placeholder" id="p-area2">[specific area]</span>. I'd welcome the chance to talk through how I'd fit in.</p>
+        </div>
 
         <p>Thank you for your time.</p>
 
@@ -150,6 +171,7 @@
     <script>
     (function () {
         'use strict';
+
         var fields = [
             { id: 'f-hiring', targets: ['p-hiring'] },
             { id: 'f-company', targets: ['p-company'] },
@@ -163,10 +185,84 @@
             'f-area': '[specific area]'
         };
 
-        fields.forEach(function (f) {
-            var input = document.getElementById(f.id);
-            if (!input) return;
-            input.addEventListener('input', function () {
+        var roles = {
+            'custom': {
+                title: '',
+                area: '',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. For the past two years I've built and maintained Oracle PL/SQL and ETL pipelines across claims, AML compliance, and LHDN E-Invoice work, and I want to put that experience to work in <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: automating the Regular Watchlist process at Maybank Ageas — PL/SQL triggers, packages, and batch jobs now handling roughly 3 million records a day, replacing what used to be a manual job for the L2 Support team. I also cleaned up a large AML data set, cutting errors by around 90% through profiling and reconciliation.",
+                projects: "Outside work, I build public projects that ship: an F1 race-pace dashboard (FastF1 to a Postgres warehouse, surfaced through Streamlit and Power BI) and an LRT monitoring prototype (FastAPI, SQLite, pytest). I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme.",
+                close: "I care most about getting data right enough to be trusted, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            },
+
+            'data-analyst': {
+                title: 'Data Analyst',
+                area: 'data analysis, SQL reporting, and dashboards',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. For the past two years I've turned business and regulatory data into reports, reconciliations, and dashboards — writing analytical SQL against Oracle 19c and building Power BI reports that people actually use. I want to bring that to <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: cleaning up a large AML data set — profiling, reconciling, and restructuring inconsistent records to cut errors by around 90% — and iterating through versions of BNM regulatory extraction SQL until the numbers matched the business rules every time.",
+                projects: "Outside work, I keep sharpening my analysis skills in public: an F1 race-pace dashboard that cleans lap data and surfaces insights through Power BI and Streamlit, and an LRT monitoring prototype (FastAPI, SQLite, pytest). I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme.",
+                close: "I care most about getting data right enough to be trusted, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            },
+
+            'data-engineer': {
+                title: 'Data Engineer',
+                area: 'data pipelines, ETL, and warehousing',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. For the past two years I've engineered Oracle PL/SQL pipelines for claims, AML, and LHDN E-Invoice workflows, and I want to put that experience to work in <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: automating the Regular Watchlist process at Maybank Ageas — PL/SQL triggers, procedures, packages, and batch jobs that now handle roughly 3 million records a day, replacing a manual process that used to fall on L2 Support. I also stand up my own ETL into a Postgres warehouse for a public project.",
+                projects: "Outside work, I build pipelines that ship: an ETL that loads 14,500+ F1 race laps into a Supabase/Postgres warehouse feeding Power BI, plus an LRT monitoring prototype (FastAPI, SQLite, pytest) with automated tests. I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme.",
+                close: "I care most about building data flows that are reliable, tested, and easy to trust, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            },
+
+            'data-scientist': {
+                title: 'Data Scientist',
+                area: 'machine learning and data science',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. I bring a data science background — a final-year CNN/LSTM deep-learning project, a Certified Data Science Programmer credential, and two years of cleaning and analysing real regulatory data in production — and I want to apply it to <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: building a lip-reading prediction system with CNN/LSTM that reached high accuracy on test data, and bringing the same rigour to AML data remediation at work, where profiling and restructuring cut errors by around 90%. I regularly use pandas, scikit-learn, and tensorflow.",
+                projects: "Outside work, I explore data science in public: an F1 race-pace analysis project and an LRT monitoring prototype with an explainable status estimator (FastAPI, SQLite, pytest). I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme through the SPRINT scholarship.",
+                close: "I care most about models that are both accurate and explainable, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            },
+
+            'bi-developer': {
+                title: 'Business Intelligence Developer',
+                area: 'Power BI, DAX, and dashboards',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. I build Power BI solutions end to end — from SQL and data preparation to data modelling, DAX measures, and dashboards — and I want to bring that to <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: designing a Power BI dashboard on top of my own Postgres warehouse, connected via ODBC with custom DAX measures, and delivering it as part of an F1 race-pace analytics platform. At work I've prepared regulatory reporting extracts that had to be exact under UAT.",
+                projects: "Outside work, my hands-on BI proof is the F1 race-pace dashboard mentioned above, and I'm actively levelling up in DAX, Power Query, Power Apps, and Power Automate. I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme.",
+                close: "I care most about dashboards people actually use to decide things, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            },
+
+            'analytics-developer': {
+                title: 'Analytics Developer',
+                area: 'Power BI, Power Apps, and Power Automate',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. I've spent two years turning banking and insurance data into working analytics, and I'm building out the Power Platform stack — Power BI, Power Apps, and Power Automate — to go from insight to action. I want to apply that in <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: automating a manual watchlist process at Maybank Ageas with PL/SQL batch jobs handling ~3 million records daily, and building Power BI dashboards backed by a Postgres warehouse with custom DAX measures. Both were about removing manual effort from a real workflow.",
+                projects: "Outside work, my analytics proof is an F1 race-pace dashboard (ETL to Postgres, surfaced through Power BI and Streamlit), and I'm actively learning Power Apps and Power Automate to complete the platform picture. I hold a B.Sc. in Computer Science from UiTM and completed the APU Certified Data Science programme.",
+                close: "I care most about analytics that end in action, not just charts, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            },
+
+            'software-engineer': {
+                title: 'Software Engineer',
+                area: 'software development and APIs',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. I write production SQL and build Python applications with tested APIs, and I want to put that experience to work in <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: building an LRT monitoring system with FastAPI, Streamlit, SQLite, and pytest — clean REST endpoints, cached data loading, and automated tests — alongside my day-to-day PL/SQL engineering at Maybank Ageas.",
+                projects: "Outside work, I ship working software: the LRT monitor above and an F1 race-pace analytics platform with an ETL pipeline into Postgres. I'm currently learning Java, Spring Boot, and Docker. I hold a B.Sc. in Computer Science from UiTM.",
+                close: "I care most about code that is clean, tested, and reliable in production, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            },
+
+            'backend-engineer': {
+                title: 'Backend Engineer',
+                area: 'backend services and data-intensive systems',
+                open: "I'm applying for the <span class='placeholder' id='p-title'>[Job Title]</span> role at <span class='placeholder' id='p-company'>[Company Name]</span>. My day-to-day work is data-heavy backend engineering — PL/SQL packages, batch jobs, and integrations — and I build Python APIs in my own projects. I want to bring that to <span class='placeholder' id='p-area'>[specific area]</span>.",
+                main: "The work I'm proudest of: a backend that ingests, stores, and serves data — my F1 platform loads 14,500+ lap records into Postgres via a robust ETL, and my LRT monitor exposes FastAPI endpoints backed by SQLite with tests. At work I run batch jobs that handle ~3 million records daily.",
+                projects: "Outside work, the F1 and LRT projects above are my backend proof: ETL pipelines, REST APIs, caching, and automated tests. I'm currently adding Java and Spring Boot. I hold a B.Sc. in Computer Science from UiTM.",
+                close: "I care most about scalable, reliable services that behave well under real load, which is why I'm drawn to <span class='placeholder' id='p-area2'>[specific area]</span>. I'd welcome the chance to talk through how I'd fit in."
+            }
+        };
+
+        function syncPlaceholders() {
+            fields.forEach(function (f) {
+                var input = document.getElementById(f.id);
+                if (!input) return;
                 var val = input.value.trim() || defaults[f.id];
                 f.targets.forEach(function (tid) {
                     var el = document.getElementById(tid);
@@ -174,7 +270,36 @@
                 });
                 input.classList.toggle('has-value', input.value.trim().length > 0);
             });
+        }
+
+        function applyRole() {
+            var sel = document.getElementById('f-role');
+            var role = roles[sel.value] || roles['custom'];
+
+            ['open', 'main', 'projects', 'close'].forEach(function (slot) {
+                var el = document.getElementById('p-' + slot);
+                if (el) el.innerHTML = role[slot];
+            });
+
+            if (role.title) document.getElementById('f-title').value = role.title;
+            if (role.area) document.getElementById('f-area').value = role.area;
+
+            syncPlaceholders();
+        }
+
+        fields.forEach(function (f) {
+            var input = document.getElementById(f.id);
+            if (!input) return;
+            input.addEventListener('input', function () {
+                syncPlaceholders();
+            });
         });
+
+        var roleSel = document.getElementById('f-role');
+        if (roleSel) {
+            roleSel.addEventListener('change', applyRole);
+            applyRole();
+        }
     })();
     </script>
 </body>
