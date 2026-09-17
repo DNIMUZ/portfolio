@@ -92,16 +92,33 @@
     const tabs = document.querySelectorAll('.exp-tab');
     const panels = document.querySelectorAll('.exp-panel');
 
-    tabs.forEach(function (tab) {
-        tab.addEventListener('click', function () {
-            const index = tab.getAttribute('data-tab');
+    function selectTab(tab) {
+        const index = tab.getAttribute('data-tab');
 
-            tabs.forEach(function (t) { t.classList.remove('active'); });
-            panels.forEach(function (p) { p.classList.remove('active'); });
+        tabs.forEach(function (t) {
+            const isActive = t === tab;
+            t.classList.toggle('active', isActive);
+            t.setAttribute('aria-selected', isActive ? 'true' : 'false');
+            t.setAttribute('tabindex', isActive ? '0' : '-1');
+        });
+        panels.forEach(function (p) {
+            const isActive = p.getAttribute('data-panel') === index;
+            p.classList.toggle('active', isActive);
+            p.setAttribute('aria-hidden', isActive ? 'false' : 'true');
+        });
+    }
 
-            tab.classList.add('active');
-            const target = document.querySelector('.exp-panel[data-panel="' + index + '"]');
-            if (target) target.classList.add('active');
+    tabs.forEach(function (tab, i) {
+        tab.addEventListener('click', function () { selectTab(tab); });
+
+        tab.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+                e.preventDefault();
+                const dir = e.key === 'ArrowRight' ? 1 : -1;
+                const next = tabs[(i + dir + tabs.length) % tabs.length];
+                selectTab(next);
+                next.focus();
+            }
         });
     });
 
