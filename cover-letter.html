@@ -128,7 +128,7 @@
         <div class="sender">MUHAMAD DINIE BIN MUZAFFAR</div>
         <div class="sender-contact">diniemuzaffar@gmail.com | linkedin.com/in/diniemuzaffar | Kuala Lumpur, Malaysia | github.com/DNIMUZ | portfolio.diniemuzaffar.workers.dev</div>
 
-        <div class="date">September 2026</div>
+        <div class="date" id="letter-date"></div>
 
         <div class="greeting">Dear <span class="placeholder" id="p-hiring">Hiring Manager</span>,</div>
 
@@ -140,7 +140,7 @@
 
         <p>I care most about getting data right enough to be trusted, which is why I'm drawn to <span class="placeholder" id="p-area2">[specific area]</span>. I'd welcome the chance to talk through how I'd fit in.</p>
 
-        <p>Thank you for your time.</p>
+        <p>Thank you for your consideration.</p>
 
         <div class="closing">
             <p>Sincerely,<br>Muhamad Dinie Bin Muzaffar</p>
@@ -162,6 +162,11 @@
             'f-title': '[Job Title]',
             'f-area': '[specific area]'
         };
+
+        var dateEl = document.getElementById('letter-date');
+        if (dateEl) {
+            dateEl.textContent = new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+        }
 
         fields.forEach(function (f) {
             var input = document.getElementById(f.id);

@@ -135,18 +135,18 @@
 
         <div class="experience-grid">
             <!-- Timeline tabs -->
-            <div class="experience-tabs" role="tablist" aria-label="Jobs">
-                <button class="exp-tab active" data-tab="0">Jun 2024 — Present</button>
-                <button class="exp-tab" data-tab="1">Mar 2024 — Jun 2024</button>
-                <button class="exp-tab" data-tab="2">Jul 2023</button>
-                <button class="exp-tab" data-tab="3">Sep 2021 — Feb 2022</button>
+<div class="experience-tabs" role="tablist" aria-label="Jobs">
+                <button id="exp-tab-0" class="exp-tab active" role="tab" tabindex="0" aria-selected="true" aria-controls="exp-panel-0" data-tab="0">June 2024 - Present</button>
+                <button id="exp-tab-1" class="exp-tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="exp-panel-1" data-tab="1">March 2024 - June 2024</button>
+                <button id="exp-tab-2" class="exp-tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="exp-panel-2" data-tab="2">July 2023</button>
+                <button id="exp-tab-3" class="exp-tab" role="tab" tabindex="-1" aria-selected="false" aria-controls="exp-panel-3" data-tab="3">September 2021 - February 2022</button>
             </div>
 
             <!-- Tab panels -->
             <div class="experience-panels">
-                <div class="exp-panel active" data-panel="0">
+                <div id="exp-panel-0" class="exp-panel active" role="tabpanel" aria-labelledby="exp-tab-0" aria-hidden="false" data-panel="0">
                     <h3 class="exp-title"><span class="accent">Data Developer / PL/SQL Developer</span> <span class="at">@ Maybank Ageas Holding Berhad (MAHB)</span></h3>
-                    <p class="exp-dates">June 2024 — Present · Banking &amp; Insurance (GLC) · Kuala Lumpur</p>
+                    <p class="exp-dates">June 2024 - Present · Banking &amp; Insurance (GLC) · Kuala Lumpur</p>
                     <ul class="exp-desc">
                         <li>Develop and maintain Oracle PL/SQL packages, stored procedures, functions, and triggers supporting Claims, AML compliance, and LHDN E-Invoice financial workflows.</li>
                         <li>Automate the Regular Watchlist process by implementing PL/SQL triggers, procedures, packages, and batch jobs, working with the ETL team to handle ~3 million records daily, replacing a manual process previously managed by L2 Support.</li>
@@ -163,9 +163,9 @@
                     </div>
                 </div>
 
-                <div class="exp-panel" data-panel="1">
+                <div id="exp-panel-1" class="exp-panel" role="tabpanel" aria-labelledby="exp-tab-1" aria-hidden="true" data-panel="1">
                     <h3 class="exp-title"><span class="accent">System Analyst Intern</span> <span class="at">@ Etiqa Insurance &amp; Takaful (Maybank Ageas)</span></h3>
-                    <p class="exp-dates">March 2024 — June 2024 · Kuala Lumpur</p>
+                    <p class="exp-dates">March 2024 - June 2024 · Kuala Lumpur</p>
                     <ul class="exp-desc">
                         <li>Contributed to the <strong>AMLA (Anti-Money Laundering Act) compliance project</strong> within the insurance sector.</li>
                         <li>Performed database cleansing and data reconciliation using Oracle PL/SQL and Oracle SQL Developer.</li>
@@ -177,7 +177,7 @@
                     </div>
                 </div>
 
-                <div class="exp-panel" data-panel="2">
+                <div id="exp-panel-2" class="exp-panel" role="tabpanel" aria-labelledby="exp-tab-2" aria-hidden="true" data-panel="2">
                     <h3 class="exp-title"><span class="accent">Event Manager</span> <span class="at">@ Universiti Teknologi MARA (UiTM)</span></h3>
                     <p class="exp-dates">July 2023 · Shah Alam, Selangor</p>
                     <ul class="exp-desc">
@@ -189,9 +189,9 @@
                     </div>
                 </div>
 
-                <div class="exp-panel" data-panel="3">
+                <div id="exp-panel-3" class="exp-panel" role="tabpanel" aria-labelledby="exp-tab-3" aria-hidden="true" data-panel="3">
                     <h3 class="exp-title"><span class="accent">Computer Service Technician</span> <span class="at">@ One Tech Computer Sdn Bhd</span></h3>
-                    <p class="exp-dates">September 2021 — February 2022 · Sungai Besar, Selangor</p>
+                    <p class="exp-dates">September 2021 - February 2022 · Sungai Besar, Selangor</p>
                     <ul class="exp-desc">
                         <li>Diagnosed and resolved hardware and software issues across diverse systems.</li>
                         <li>Delivered prompt, professional technical support while maintaining high client satisfaction.</li>
@@ -223,7 +223,7 @@
                         An interactive Formula 1 dashboard for analysing race pace, tyre degradation, and
                         pit-stop strategy using official FIA timing data. Visualise lap-time evolution,
                         compare drivers head-to-head, and inspect tyre compounds &amp; pit-stop timelines.
-                        ETL pipeline loads 14,500+ laps into a Postgres warehouse (Supabase); a companion
+                        ETL pipeline loads 42,300+ lap records from 38 races across the 2025-2026 seasons into a Postgres warehouse (Supabase); a companion
                         <strong>4-page Power BI dashboard</strong> reads from the same warehouse via ODBC.
                     </p>
                 </div>
@@ -374,7 +374,7 @@
             <div class="edu-block">
                 <h3 class="edu-title"><span class="accent">B.Sc. Computer Science (Hons.)</span></h3>
                 <p class="edu-school">Universiti Teknologi MARA (UiTM) Shah Alam</p>
-                <p class="edu-date">Mar 2022 — Jun 2024 · CGPA 3.29</p>
+                <p class="edu-date">March 2022 - June 2024 · CGPA 3.29</p>
                 <ul class="edu-desc">
                     <li><strong>Final Year Project:</strong> Designed a lip-reading prediction system using CNN/LSTM; it reached high accuracy on test data without long training runs.</li>
                     <li>Built Power BI dashboards from cleaned, combined datasets to surface business insights.</li>
@@ -385,13 +385,13 @@
             <div class="edu-block">
                 <h3 class="edu-title"><span class="accent">Diploma in Computer Science</span></h3>
                 <p class="edu-school">Universiti Teknologi MARA (UiTM) Cawangan Terengganu</p>
-                <p class="edu-date">Jun 2019 — Feb 2022 · CGPA 3.58</p>
+                <p class="edu-date">June 2019 - February 2022 · CGPA 3.58</p>
             </div>
 
             <div class="edu-block">
                 <h3 class="edu-title"><span class="accent">APU Certified Data Science Programmer (ACDSP)</span></h3>
                 <p class="edu-school">Asia Pacific University of Technology &amp; Innovation (APU)</p>
-                <p class="edu-date">Dec 2023 — Jun 2024</p>
+                <p class="edu-date">December 2023 - June 2024</p>
                 <p class="edu-note">Fully funded by Yayasan Peneraju Pendidikan Bumiputera (SPRINT programme).</p>
             </div>
         </div>
@@ -417,7 +417,7 @@
             <h2 class="reveal">Get In Touch</h2>
         </div>
         <div class="contact-inner">
-            <p class="contact-lead">I'm currently open to data analytics, data science, data engineering, and BI opportunities.</p>
+            <p class="contact-lead">I'm currently open to data analytics, data science, data engineering, business intelligence, ETL, and Oracle database roles.</p>
             <p class="contact-desc">
                 Whether you want to collaborate on a data project, discuss an opportunity, or just say hi,
                 my inbox is always open. I'll get back to you as soon as I can.
