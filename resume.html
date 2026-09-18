@@ -318,11 +318,11 @@
             </div>
 
             <div class="project">
-                <div class="project-title">Kelana Jaya LRT Monitor | Python, FastAPI, Streamlit, SQLite, Pandas, pytest</div>
+                <div class="project-title">Kelana Jaya LRT Insights Dashboard | Python, Streamlit, Altair, FastAPI, SQLite, Supabase, pytest</div>
                 <ul class="bullets">
-                    <li>Built a monitoring prototype combining official transport facts, public signals, and synthetic demonstration data.</li>
-                    <li>Implemented SQLite storage, FastAPI endpoints, Streamlit dashboard views, and an explainable status estimator.</li>
-                    <li>Added data validation, station mapping, signal classification, and automated tests for core processing and API behavior.</li>
+                    <li>Built and deployed a public insights dashboard for the Kelana Jaya LRT line combining official data.gov.my ridership (2019-2026) with 800+ real public posts from Threads, classified into crowding, delay, disruption, and other signal categories via keyword-based classification.</li>
+                    <li>Implemented a bulk Threads collection pipeline (Apify SSR actor, ~300 curated queries) with five-stage filtering (relevance, classification, station detection, de-duplication) into SQLite, plus weekday seasonality, anomaly detection, lagged correlation, and a ridge forecast reported with holdout MAE/MAPE/RAE.</li>
+                    <li>Designed the privacy-first public build so the deployed dashboard reads only aggregate statistics (Supabase or published CSV/JSON) and never exposes raw post text or author identities; a private mode syncs the full corpus through Supabase Postgres with unique-key upserts. 51 automated tests cover the pipeline, API, and dashboard.</li>
                 </ul>
                 <div class="project-links">GitHub: <a href="https://github.com/DNIMUZ/lrt-kelana-jaya-monitor" target="_blank" rel="noopener">github.com/DNIMUZ/lrt-kelana-jaya-monitor</a></div>
             </div>
@@ -331,12 +331,12 @@
         <section>
             <h2 class="section-title">Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-item"><b>BI and Visualisation:</b> Power BI, Microsoft Excel, Plotly, Matplotlib, Seaborn</div>
+                <div class="skill-item"><b>BI and Visualisation:</b> Power BI, Microsoft Excel, Plotly, Altair, Matplotlib, Seaborn</div>
                 <div class="skill-item"><b>Databases and SQL:</b> Oracle PL/SQL, Oracle Database 19c, Oracle SQL Developer, SQL, PostgreSQL, Supabase, SQLite</div>
                 <div class="skill-item"><b>Data Engineering and ETL:</b> ETL pipelines, data cleaning, data reconciliation, batch processing, data modelling, data validation, ODBC</div>
                 <div class="skill-item"><b>Programming:</b> Python (Pandas, NumPy, scikit-learn), PL/SQL</div>
                 <div class="skill-item"><b>Data Science and ML:</b> Machine learning, deep learning, CNN/LSTM, exploratory data analysis, data cleaning, feature engineering</div>
-                <div class="skill-item"><b>Applications and Tools:</b> FastAPI, Streamlit, REST APIs, Git, GitHub, Jupyter Notebook, pytest</div>
+                <div class="skill-item"><b>Applications and Tools:</b> FastAPI, Streamlit, REST APIs, Git, GitHub, Jupyter Notebook, pytest, Apify (web scraping)</div>
                 <div class="skill-item"><b>AI and Automation:</b> GitHub Copilot, Claude AI (Sonnet/Opus), AI agent workflows, prompt engineering, AI-assisted development</div>
                 <div class="skill-item"><b>Regulatory and Delivery:</b> AML/AMLA, LHDN E-Invoice, BNM compliance, regulatory reporting, SDLC, Agile, Waterfall</div>
                 <div class="skill-item"><b>Currently learning:</b> Power Apps, Power Automate, DAX &amp; Power Query (M), Java &amp; Spring Boot, Docker &amp; Containerisation, modern data stack (dbt, DuckDB, Airflow, Spark)</div>

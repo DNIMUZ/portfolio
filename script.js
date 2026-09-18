@@ -29,6 +29,37 @@
         });
     }
 
+    /* ---------- Mobile nav toggle ---------- */
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    function setMobileNav(open) {
+        if (!navToggle || !navLinks) return;
+        navLinks.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Toggle menu');
+    }
+
+    if (navToggle && navLinks) {
+        navToggle.addEventListener('click', function () {
+            setMobileNav(!navLinks.classList.contains('open'));
+        });
+
+        navLinks.addEventListener('click', function (e) {
+            if (e.target.closest('a')) setMobileNav(false);
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') setMobileNav(false);
+        });
+
+        document.addEventListener('click', function (e) {
+            if (navLinks.classList.contains('open') && !e.target.closest('.nav')) {
+                setMobileNav(false);
+            }
+        });
+    }
+
     /* ---------- Nav background on scroll ---------- */
     const header = document.getElementById('site-header');
     function onScrollHeader() {

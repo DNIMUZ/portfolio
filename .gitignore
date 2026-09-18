@@ -1,3 +1,4 @@
 *.docx
 *.docx.backup
 .opencode/
+.impeccable/

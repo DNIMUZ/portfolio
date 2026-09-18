@@ -244,6 +244,8 @@ body {
     .theme-toggle,
     .theme-toggle .icon-sun,
     .theme-toggle .icon-moon,
+    .nav-toggle,
+    .nav-links,
     .exp-tab::after,
     .photo-frame,
     .project-card,
@@ -420,6 +422,30 @@ img {
 .icon-moon { display: none; }
 [data-theme="light"] .icon-sun { display: none; }
 [data-theme="light"] .icon-moon { display: block; }
+
+/* Mobile nav toggle — hidden on desktop */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--slate-light);
+    padding: 6px;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--transition);
+}
+
+.nav-toggle:hover {
+    color: var(--green);
+}
+
+.nav-toggle:focus-visible {
+    color: var(--green);
+    outline: 2px solid var(--green);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
 
 /* ============================================================
    BUTTONS
@@ -955,6 +981,31 @@ img {
     color: var(--slate-mid);
 }
 
+/* Real chart thumbnails (rendered from each project's own data) */
+.project-thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--navy-lighter);
+    background: var(--navy-light);
+    transition: transform var(--transition);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .project-image:hover .project-thumb {
+        transform: scale(1.02);
+    }
+}
+
+@media (hover: none) {
+    .project-image:hover .project-thumb {
+        transform: none;
+    }
+}
+
 /* Grid cards */
 .project-grid {
     display: grid;
@@ -1305,6 +1356,41 @@ img {
     }
     .nav-links {
         display: none;
+        position: fixed;
+        top: var(--nav-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 10px 0 16px;
+        background-color: rgba(10, 25, 47, 0.98);
+        box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+        z-index: 99;
+    }
+    [data-theme="light"] .nav-links {
+        background-color: rgba(245, 245, 247, 0.98);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+    }
+    .nav-links.open {
+        display: flex;
+    }
+    .nav-links a {
+        display: block;
+        padding: 12px 20px;
+        width: 100%;
+        text-align: center;
+        font-size: 0.9rem;
+    }
+    .nav-toggle {
+        display: flex;
+    }
+    .nav-cta {
+        gap: 8px;
+    }
+    .nav-cta .btn-sm {
+        padding: 8px 12px;
+        font-size: 0.7rem;
     }
     .about-grid {
         grid-template-columns: 1fr;
