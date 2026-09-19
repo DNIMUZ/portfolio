@@ -1044,10 +1044,6 @@ img {
 }
 
 /* In-build teaser card */
-.project-card.is-inbuild {
-    border: 1px solid var(--navy-lighter);
-}
-
 .project-card.is-inbuild .project-links {
     display: none;
 }
