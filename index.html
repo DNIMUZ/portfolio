@@ -10,9 +10,28 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <noscript><style>.loader { display: none !important; }</style></noscript>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><g stroke='%2364ffda' stroke-width='6' fill='none' stroke-linecap='round' stroke-linejoin='round'><path d='M50 5 L11 27 L11 72 L50 95 L89 73 L89 28 z'/><path d='M38 32 L38 68'/><path d='M38 32 C54 28 66 40 66 50 C66 60 54 72 38 68'/></g></svg>">
 </head>
 <body>
+    <!-- ============================ INITIAL LOADER ============================ -->
+    <div class="loader" id="loader" aria-hidden="true">
+        <div class="loader-logo-wrapper">
+            <svg id="loader-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <title>Loader Logo</title>
+                <g>
+                    <path id="logo-hexagon" fill="none" stroke="currentColor" stroke-width="5"
+                          stroke-linecap="round" stroke-linejoin="round"
+                          d="M 50, 5 L 11, 27 L 11, 72 L 50, 95 L 89, 73 L 89, 28 z"/>
+                    <g id="logo-letter" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round">
+                        <path d="M 38 32 L 38 68"/>
+                        <path d="M 38 32 C 54 28 66 40 66 50 C 66 60 54 72 38 68"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+
     <!-- Skip link for accessibility -->
     <a class="skip-link" href="#content">Skip to content</a>
 
@@ -20,9 +39,13 @@
     <header class="site-header" id="site-header">
         <nav class="nav" aria-label="Primary">
             <a href="#" class="nav-logo" aria-label="Home">
-                <svg class="logo-mark" width="42" height="42" viewBox="0 0 42 42" fill="none" aria-hidden="true">
-                    <rect x="1" y="1" width="40" height="40" rx="8" stroke="#64ffda" stroke-width="2" fill="none"/>
-                    <text x="21" y="28" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="20" fill="#64ffda">D</text>
+                <svg class="logo-mark" width="42" height="42" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+                    <path stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"
+                          d="M 50, 5 L 11, 27 L 11, 72 L 50, 95 L 89, 73 L 89, 28 z"/>
+                    <g stroke="currentColor" stroke-width="5" stroke-linecap="round">
+                        <path d="M 38 32 L 38 68"/>
+                        <path d="M 38 32 C 54 28 66 40 66 50 C 66 60 54 72 38 68"/>
+                    </g>
                 </svg>
             </a>
 
@@ -35,22 +58,51 @@
             </ul>
 
             <div class="nav-cta">
-                <a href="resume.html" class="btn btn-outline btn-sm">Resume</a>
-                <a href="mailto:diniemuzaffar@gmail.com" class="btn btn-outline btn-sm">Get In Touch</a>
+                <a href="resume.html" class="btn btn-outline btn-sm resume-link">Resume</a>
                 <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark mode">
                     <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                     <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
                 </button>
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <span class="ham-box">
+                        <span class="ham-inner"></span>
+                    </span>
+                </button>
             </div>
         </nav>
     </header>
+
+    <!-- ============================ MOBILE MENU ============================ -->
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+        <nav class="mobile-menu-inner" aria-label="Mobile">
+            <ol class="mobile-links">
+                <li><a href="#about"><span>01.</span> About</a></li>
+                <li><a href="#experience"><span>02.</span> Experience</a></li>
+                <li><a href="#projects"><span>03.</span> Projects</a></li>
+                <li><a href="#education"><span>04.</span> Education</a></li>
+                <li><a href="#contact"><span>05.</span> Contact</a></li>
+            </ol>
+            <a href="resume.html" class="btn btn-outline">Resume</a>
+            <ul class="mobile-social">
+                <li><a href="https://github.com/DNIMUZ" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+                </a></li>
+                <li><a href="https://www.linkedin.com/in/diniemuzaffar/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+                </a></li>
+                <li><a href="mailto:diniemuzaffar@gmail.com" aria-label="Email" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a></li>
+            </ul>
+        </nav>
+    </div>
 
     <!-- ============================ HERO ============================ -->
     <main id="content">
 <section class="hero section" id="hero" aria-label="Introduction">
         <div class="hero-inner stagger-entrance">
             <p class="hero-greeting">Hi, my name is</p>
-            <h1 class="hero-name">Dinie Muzaffar<span class="cursor">.</span></h1>
+            <h1 class="hero-name">Dinie Muzaffar<span class="hero-period">.</span></h1>
             <h2 class="hero-title">I turn data into reliable pipelines, models, dashboards, and insights.</h2>
             <p class="hero-desc">
                 I'm a <strong>Data Developer & Oracle PL/SQL Developer</strong> based in Kuala Lumpur with 2+ years across
@@ -97,12 +149,12 @@
                 <h3 class="tech-group">Core — used daily &amp; defensible</h3>
                 <ul class="tech-list stagger-entrance">
                     <li>Oracle PL/SQL &amp; Oracle 19c</li>
-                    <li>SQL &amp; SQLite &amp; Supabase</li>
+                    <li>SQL &amp; SQLite</li>
                     <li>Python (Pandas, NumPy)</li>
                     <li>scikit-learn &amp; TensorFlow</li>
                     <li>ETL &amp; Data Modelling</li>
                     <li>Data Reconciliation</li>
-                    <li>Streamlit, Altair &amp; FastAPI</li>
+                    <li>Streamlit &amp; FastAPI</li>
                     <li>Power BI &amp; Excel</li>
                     <li>AML / BNM / LHDN</li>
                     <li>CNN/LSTM (Deep Learning)</li>
@@ -208,7 +260,7 @@
     <section class="projects section" id="projects" aria-label="Projects">
         <div class="section-heading">
             <span class="section-number">03.</span>
-            <h2 class="reveal">Things I've Built</h2>
+            <h2 class="reveal">Some Things I've Built</h2>
         </div>
 
         <!-- Featured / Complete -->
@@ -252,21 +304,24 @@
                 <h3 class="project-title"><a href="https://github.com/DNIMUZ/lrt-kelana-jaya-monitor" target="_blank" rel="noopener">LRT Kelana Jaya Monitor</a></h3>
                 <div class="project-description">
                     <p>
-                        A deployed insights dashboard for the Kelana Jaya LRT line combining official
-                        data.gov.my ridership (2019-2026) with 800+ real public posts from Threads,
-                        classified into crowding, delay, disruption, and other signal categories via
-                        keyword-based classification. Built privacy-first: the deployed dashboard
-                        reads only aggregate statistics &mdash; never raw post text or author identities.
+                        An evidence-aware monitoring system for the Kelana Jaya LRT line. Combines historical
+                        demand, official operational facts, and public signals with an explainable status
+                        estimator that never presents predictions as official information.
                     </p>
                 </div>
                 <ul class="project-tech stagger-entrance">
-                    <li>Python</li><li>Streamlit</li><li>Altair</li><li>FastAPI</li><li>SQLite</li><li>Supabase</li><li>pytest</li>
+                    <li>Python</li><li>FastAPI</li><li>Streamlit</li><li>SQLite</li><li>pytest</li>
                 </ul>
                 <div class="project-links">
+<<<<<<< Updated upstream
                     <a href="https://lrt-kelana-jaya-monitor-mf7vbqnzcubnfhipw747ay.streamlit.app/" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+=======
+                    <a href="https://lrt-kelana-jaya-monitor-mf7vbqnzcubnfhipw747ay.streamlit.app/" target="_blank" rel="noopener" aria-label="Live demo" title="Live demo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+>>>>>>> Stashed changes
                     </a>
-                     <a href="https://github.com/DNIMUZ/lrt-kelana-jaya-monitor" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
+                    <a href="https://github.com/DNIMUZ/lrt-kelana-jaya-monitor" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
                     </a>
                 </div>
@@ -280,6 +335,7 @@
 
         <div class="project-card featured">
             <div class="project-content">
+<<<<<<< Updated upstream
                 <p class="project-overline">Featured Project — Personal Engineering</p>
                 <h3 class="project-title"><a href="https://github.com/DNIMUZ/s10-low-temp-charging-fix" target="_blank" rel="noopener">Reviving My Old Samsung Galaxy S10+</a></h3>
                 <div class="project-description">
@@ -296,13 +352,39 @@
                 </ul>
                 <div class="project-links">
                     <a href="https://github.com/DNIMUZ/s10-low-temp-charging-fix" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
+=======
+                <p class="project-overline">Featured Project — Computer Vision</p>
+                <h3 class="project-title"><a href="https://github.com/DNIMUZ/meko-lily-classifier" target="_blank" rel="noopener">Meko &amp; Lily Classifier</a></h3>
+                <div class="project-description">
+                    <p>
+                        A deployed Streamlit app that tells two family cats apart from any other cat. Trains a
+                        two-stage fine-tuned MobileNetV2 on 5,166 privacy-stripped images with macro-recall
+                        early stopping and occlusion augmentation &mdash; val accuracy 0.994 / macro recall
+                        0.984 &mdash; plus YOLOv8 detection and snapshot &amp; live-webcam (WebRTC) modes. Fixed
+                        a repeated &quot;Lily tagged as Meko&quot; mislabel, lifting holdout passes from 3/7 to 5/7.
+                    </p>
+                </div>
+                <ul class="project-tech stagger-entrance">
+                    <li>Python</li><li>TensorFlow</li><li>MobileNetV2</li><li>YOLOv8</li><li>OpenCV</li><li>Streamlit</li>
+                </ul>
+                <div class="project-links">
+                    <a href="https://meko-lily-classifier-nmobetz55bhpyimf2fc2on.streamlit.app/" target="_blank" rel="noopener" aria-label="Live demo" title="Live demo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                    <a href="https://github.com/DNIMUZ/meko-lily-classifier" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
+>>>>>>> Stashed changes
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
                     </a>
                 </div>
             </div>
             <div class="project-image">
+<<<<<<< Updated upstream
                 <a href="https://github.com/DNIMUZ/s10-low-temp-charging-fix" target="_blank" rel="noopener">
                     <div class="project-img-placeholder" style="--placeholder:'S10';">S10</div>
+=======
+                <a href="https://meko-lily-classifier-nmobetz55bhpyimf2fc2on.streamlit.app/" target="_blank" rel="noopener">
+                    <div class="project-img-placeholder" style="--placeholder:'M&L';">M&amp;L</div>
+>>>>>>> Stashed changes
                 </a>
             </div>
         </div>
@@ -315,8 +397,32 @@
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                     </div>
                     <div class="project-links">
+<<<<<<< Updated upstream
                         <a href="https://github.com/DNIMUZ/meko-lily-classifier" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+=======
+                        <a href="https://github.com/DNIMUZ/s10-low-temp-charging-fix" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <h3 class="project-grid-title">Reviving My Old Samsung Galaxy S10+</h3>
+                <p class="project-desc">A documented repair story: an S10+ stuck at 1% battery on a false -20°C reading, diagnosed over ADB and fixed with a real replacement part.</p>
+                <ul class="project-tech stagger-entrance">
+                    <li>ADB</li><li>dumpsys</li><li>PowerShell</li><li>Hardware</li><li>Documentation</li>
+                </ul>
+                <span class="status-badge done">&#10003; Complete</span>
+            </div>
+
+            <div class="project-card small">
+                <div class="project-top">
+                    <div class="project-folder">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://www.linkedin.com/in/diniemuzaffar/overlay/1705506484678/single-media-viewer?profileId=ACoAADa3bPsBJxlrKW1t4ZhDEuNK8hapsE1SD8o" target="_blank" rel="noopener" aria-label="View project" title="View project">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+>>>>>>> Stashed changes
                         </a>
                     </div>
                 </div>
@@ -351,7 +457,13 @@
                         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
                     </div>
                     <div class="project-links">
+<<<<<<< Updated upstream
                         <!-- No live link yet -->
+=======
+                        <a href="https://www.linkedin.com/in/diniemuzaffar/overlay/1705507102283/single-media-viewer?profileId=ACoAADa3bPsBJxlrKW1t4ZhDEuNK8hapsE1SD8o" target="_blank" rel="noopener" aria-label="View project" title="View project">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+>>>>>>> Stashed changes
                     </div>
                 </div>
                 <h3 class="project-grid-title">Student Enrollment Analytics</h3>
@@ -361,10 +473,30 @@
                 </ul>
                 <span class="status-badge done">&#10003; Complete</span>
             </div>
+<<<<<<< Updated upstream
+=======
+
+            <div class="project-card small is-inbuild">
+                <div class="project-top">
+                    <div class="project-folder">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    </div>
+                    <div class="project-links">
+                        <!-- Sealed until release -->
+                    </div>
+                </div>
+                <div class="redacted-block" aria-hidden="true">
+                    <span></span><span></span><span></span><span></span>
+                </div>
+                <h3 class="project-grid-title">New project &mdash; in the works</h3>
+                <p class="project-desc">Pieces are being assembled in the lab. The full reveal is coming soon.</p>
+                <span class="status-badge ongoing">&#9679; In Build</span>
+            </div>
+>>>>>>> Stashed changes
         </div>
 
         <div class="projects-more">
-            <a href="https://github.com/DNIMUZ?tab=repositories" target="_blank" rel="noopener" class="btn btn-outline">View Full Project Archive</a>
+            <a href="https://github.com/DNIMUZ?tab=repositories" target="_blank" rel="noopener" class="btn btn-outline">View the archive</a>
         </div>
     </section>
 

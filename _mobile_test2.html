@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script>
+var width = new URLSearchParams(location.search).get('w') || '768';
+var f = document.createElement('iframe');
+document.body.appendChild(f);
+f.style.width = width + 'px';
+f.style.height = '800px';
+f.style.border = '0';
+f.src = '/index.html';
+setTimeout(function () {
+  var doc = f.contentDocument, win = f.contentWindow;
+  win.scrollTo(0, doc.body.scrollHeight);
+  setTimeout(function () {
+    win.scrollTo(0, 0);
+    setTimeout(function () {
+      var cw = doc.documentElement.clientWidth;
+      var out = { width: +width, clientWidth: cw, scrollWidth: doc.documentElement.scrollWidth };
+      var right = [];
+      doc.querySelectorAll('*').forEach(function (e) {
+        var r = e.getBoundingClientRect();
+        if (r.right > cw + 2) right.push(e.tagName + '.' + String(e.className).slice(0, 16) + ' right=' + Math.round(r.right) + ' left=' + Math.round(r.left) + ' w=' + Math.round(r.width));
+      });
+      out.rightOverflow = right.slice(0, 14);
+      out.count = right.length;
+      var pre = document.createElement('pre');
+      pre.textContent = JSON.stringify(out);
+      document.body.appendChild(pre);
+    }, 1500);
+  }, 1500);
+}, 7000);
+</script>
+</head>
+<body></body>
+</html>
