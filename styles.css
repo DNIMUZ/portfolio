@@ -1043,6 +1043,36 @@ img {
     50% { opacity: 0.72; transform: scale(0.97); }
 }
 
+/* In-build teaser card */
+.project-card.is-inbuild {
+    border: 1px solid var(--navy-lighter);
+}
+
+.project-card.is-inbuild .project-links {
+    display: none;
+}
+
+.redacted-block {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 16px;
+    user-select: none;
+}
+
+.redacted-block span {
+    height: 8px;
+    border-radius: 3px;
+    background: var(--slate-dark);
+    opacity: 0.45;
+    filter: blur(4px);
+}
+
+.redacted-block span:nth-child(1) { width: 96%; }
+.redacted-block span:nth-child(2) { width: 82%; }
+.redacted-block span:nth-child(3) { width: 90%; }
+.redacted-block span:nth-child(4) { width: 58%; }
+
 /* Progress bars */
 .progress-row {
     display: flex;
