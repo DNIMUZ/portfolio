@@ -277,7 +277,7 @@
                     <span class="edu-meta">March 2022 - June 2024 | CGPA: 3.29</span>
                 </div>
                 <ul class="edu-bullets">
-                    <li>Final Year Project: Built a lip-reading prediction system using deep learning (CNN/LSTM), focusing on model accuracy and efficiency.</li>
+                    <li>Final Year Project: Designed a lip-reading prediction system using CNN/LSTM; it reached high accuracy on test data without long training runs.</li>
                     <li>Built a Power BI dashboard by cleaning and combining multiple datasets to surface clear business insights.</li>
                     <li>Applied RapidMiner for data preprocessing, transformation, and pattern extraction from raw datasets.</li>
                 </ul>
@@ -326,6 +326,16 @@
                 </ul>
                 <div class="project-links">GitHub: <a href="https://github.com/DNIMUZ/lrt-kelana-jaya-monitor" target="_blank" rel="noopener">github.com/DNIMUZ/lrt-kelana-jaya-monitor</a></div>
             </div>
+
+            <div class="project">
+                <div class="project-title">Meko &amp; Lily Cat Classifier | Python, TensorFlow, MobileNetV2, YOLOv8, OpenCV, Streamlit</div>
+                <ul class="bullets">
+                    <li>Fine-tuned a pretrained MobileNetV2 in two stages on 5,166 privacy-stripped images (macro-recall early stopping + occlusion augmentation) to distinguish two family cats from any other cat, reaching 0.994 validation accuracy and 0.984 macro recall.</li>
+                    <li>Fixed a repeated &quot;Lily tagged as Meko&quot; mislabel by adding a hard-negative other-cat class and re-tuning, lifting a 7-photo unseen holdout from 3/7 to 5/7 passes.</li>
+                    <li>Built a Streamlit app with YOLOv8 cat detection plus snapshot and live-webcam (WebRTC) modes that box and label Meko, Lily, or other cat.</li>
+                </ul>
+                <div class="project-links">GitHub: <a href="https://github.com/DNIMUZ/meko-lily-classifier" target="_blank" rel="noopener">github.com/DNIMUZ/meko-lily-classifier</a></div>
+            </div>
         </section>
 
         <section>
@@ -363,6 +373,5 @@
         </section>
     </div>
 
-    <script src="script.js"></script>
 </body>
 </html>
