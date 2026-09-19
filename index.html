@@ -307,27 +307,40 @@
             </div>
         </div>
 
-        <!-- Grid of smaller featured projects -->
-        <div class="project-grid">
-            <div class="project-card small">
-                <div class="project-top">
-                    <div class="project-folder">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/DNIMUZ/meko-lily-classifier" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
-                        </a>
-                    </div>
+        <div class="project-card featured reverse">
+            <div class="project-content">
+                <p class="project-overline">Featured Project — Computer Vision</p>
+                <h3 class="project-title"><a href="https://github.com/DNIMUZ/meko-lily-classifier" target="_blank" rel="noopener">Meko &amp; Lily Classifier</a></h3>
+                <div class="project-description">
+                    <p>
+                        A deployed Streamlit app that tells two family cats apart from any other cat. Trains a
+                        two-stage fine-tuned MobileNetV2 on 5,166 privacy-stripped images with macro-recall
+                        early stopping and occlusion augmentation &mdash; val accuracy 0.994 / macro recall
+                        0.984 &mdash; plus YOLOv8 detection and snapshot &amp; live-webcam (WebRTC) modes. Fixed
+                        a repeated &quot;Lily tagged as Meko&quot; mislabel, lifting holdout passes from 3/7 to 5/7.
+                    </p>
                 </div>
-                <h3 class="project-grid-title">Meko &amp; Lily Classifier</h3>
-                <p class="project-desc">Fine-tuned MobileNetV2 on 5,166 privacy-stripped images (two-stage, macro-recall early stopping + occlusion augmentation; val accuracy 0.994 / macro recall 0.984) to tell my two cats apart from any other cat, and fixed a repeated &quot;Lily tagged as Meko&quot; mislabel (holdout 3/7 &rarr; 5/7). Served from a Streamlit app with YOLOv8 detection plus snapshot and live-webcam modes.</p>
                 <ul class="project-tech stagger-entrance">
                     <li>Python</li><li>TensorFlow</li><li>MobileNetV2</li><li>YOLOv8</li><li>OpenCV</li><li>Streamlit</li>
                 </ul>
-                <span class="status-badge done">&#10003; Complete</span>
+                <div class="project-links">
+                    <a href="https://meko-lily-classifier-nmobetz55bhpyimf2fc2on.streamlit.app/" target="_blank" rel="noopener" aria-label="Live demo" title="Live demo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                    </a>
+                    <a href="https://github.com/DNIMUZ/meko-lily-classifier" target="_blank" rel="noopener" aria-label="GitHub repo" title="GitHub">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.58.11.79-.25.79-.56v-2.03c-3.2.7-3.87-1.36-3.87-1.36-.53-1.32-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.75 2.68 1.25 3.33.95.1-.74.4-1.25.72-1.54-2.55-.29-5.23-1.27-5.23-5.66 0-1.25.45-2.27 1.18-3.07-.12-.29-.51-1.46.11-3.05 0 0 .96-.31 3.15 1.17a10.9 10.9 0 0 1 5.73 0c2.19-1.48 3.15-1.17 3.15-1.17.62 1.59.23 2.76.11 3.05.73.8 1.18 1.82 1.18 3.07 0 4.4-2.69 5.37-5.25 5.65.41.35.77 1.05.77 2.12v3.15c0 .31.21.68.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+                    </a>
+                </div>
             </div>
+            <div class="project-image">
+                <a href="https://meko-lily-classifier-nmobetz55bhpyimf2fc2on.streamlit.app/" target="_blank" rel="noopener">
+                    <div class="project-img-placeholder" style="--placeholder:'M&L';">M&amp;L</div>
+                </a>
+            </div>
+        </div>
 
+        <!-- Grid of smaller featured projects -->
+        <div class="project-grid">
             <div class="project-card small">
                 <div class="project-top">
                     <div class="project-folder">
