@@ -247,6 +247,7 @@ body {
     .exp-tab::after,
     .photo-frame,
     .project-card,
+    .status-badge.ongoing,
     .about-photo .photo-frame,
     .about-photo .photo-frame::after {
         animation: none !important;
@@ -1034,6 +1035,12 @@ img {
 .status-badge.ongoing {
     color: #ffd166;
     background: rgba(255, 209, 102, 0.1);
+    animation: badgePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.72; transform: scale(0.97); }
 }
 
 /* Progress bars */
