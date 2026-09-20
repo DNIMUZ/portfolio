@@ -5,6 +5,27 @@
 (function () {
     'use strict';
 
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- Initial loader ---------- */
+    const loader = document.getElementById('loader');
+
+    function hideLoader() {
+        if (!loader) return;
+        loader.classList.add('is-hidden');
+        document.body.classList.remove('no-scroll');
+    }
+
+    function initLoader() {
+        if (!loader) return;
+        document.body.classList.add('no-scroll');
+        if (prefersReducedMotion) {
+            hideLoader();
+            return;
+        }
+        window.setTimeout(hideLoader, 3400);
+    }
+
     /* ---------- Theme toggle (persisted) ---------- */
     const themeToggle = document.getElementById('theme-toggle');
     const STORAGE_KEY = 'dinie-theme';
@@ -43,50 +64,52 @@
     onScrollHeader();
 
     /* ---------- Scroll reveal ---------- */
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-                revealObserver.unobserve(entry.target);
-            }
+    function initReveal() {
+        const revealEls = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        revealEls.forEach(function (el) {
+            revealObserver.observe(el);
         });
-    }, { threshold: 0.15 });
 
-    revealEls.forEach(function (el) {
-        revealObserver.observe(el);
-    });
+        /* ---------- Staggered entrance for hero, tech and project groups ---------- */
+        const staggerContainers = document.querySelectorAll('.stagger-entrance');
+        function revealStagger(container) {
+            if (container.classList.contains('is-visible')) return;
+            container.classList.add('is-visible');
+            const items = container.children;
+            Array.from(items).forEach(function (item, i) {
+                item.style.animationDelay = (i * 80) + 'ms';
+            });
+        }
 
-    /* ---------- Staggered entrance for hero, tech and project groups ---------- */
-    const staggerContainers = document.querySelectorAll('.stagger-entrance');
-    function revealStagger(container) {
-        if (container.classList.contains('is-visible')) return;
-        container.classList.add('is-visible');
-        const items = container.children;
-        Array.from(items).forEach(function (item, i) {
-            item.style.animationDelay = (i * 80) + 'ms';
+        const heroInner = document.querySelector('.hero-inner');
+        if (heroInner && heroInner.classList.contains('stagger-entrance')) {
+            // Hero is visible on load — animate immediately
+            requestAnimationFrame(function () { revealStagger(heroInner); });
+        }
+
+        const staggerObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    revealStagger(entry.target);
+                    staggerObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+        staggerContainers.forEach(function (container) {
+            if (container === heroInner) return; // already handled
+            staggerObserver.observe(container);
         });
     }
-
-    const heroInner = document.querySelector('.hero-inner');
-    if (heroInner && heroInner.classList.contains('stagger-entrance')) {
-        // Hero is visible on load — animate immediately
-        requestAnimationFrame(function () { revealStagger(heroInner); });
-    }
-
-    const staggerObserver = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-                revealStagger(entry.target);
-                staggerObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
-
-    staggerContainers.forEach(function (container) {
-        if (container === heroInner) return; // already handled
-        staggerObserver.observe(container);
-    });
 
     /* ---------- Experience tabs ---------- */
     const tabs = document.querySelectorAll('.exp-tab');
@@ -153,5 +176,13 @@
             }
         });
     });
+
+    /* ---------- Boot ---------- */
+    initLoader();
+    if (!loader || prefersReducedMotion || loader.classList.contains('is-hidden')) {
+        initReveal();
+    } else {
+        window.setTimeout(initReveal, 3400);
+    }
 
 })();
